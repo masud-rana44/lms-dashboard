@@ -1,60 +1,14 @@
-export interface DashboardStats {
-  enrolledCount: number;
-  inProgressCount: number;
-  overallProgress: number;
-  completedCount: number;
-  completedThisMonth: number;
-  certificatesCount: number;
-  latestCertificate: string;
-  courses: {
-    id: string;
-    title: string;
-    progress: number;
-    status: "not-started" | "in-progress" | "completed";
-    lastAccessed: string;
-  }[];
-}
-
-export interface Course {
-  id: string;
-  title: string;
-  studentsCount: number;
-  status: "published" | "draft" | "archived";
-  lastUpdated: string;
-}
-
-export interface CourseDetails {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  price: number;
-  category: "development" | "design";
-  level: "beginner" | "intermediate" | "expert";
-  instructor: {
-    id: string;
-    name: string;
-    email: string;
-  };
-  lessons: {
-    id: string;
-    title: string;
-    order: number;
-    videoUrl: string;
-  }[];
-}
-
-export interface Sale {
-  id: string;
-  studentName: string;
+export interface User {
+  id: number;
+  name: string;
   email: string;
-  courseName: string;
-  amount: number;
-  date: string;
+  role: "student" | "instructor" | "admin";
+  password: string;
+  avatar?: string;
 }
 
-// Types
 export interface Quiz {
+  id: string;
   question: string;
   options: string[];
   correctOption: number;
@@ -65,18 +19,38 @@ export interface Lesson {
   title: string;
   description: string;
   videoUrl: string;
+  materialUrl?: string;
+  duration: number;
+  completions: number;
   hasQuiz: boolean;
-  quiz?: Quiz;
+  quizzes: Quiz[];
 }
 
 export interface Course {
   id: string;
   title: string;
   description: string;
+  price: number;
   imageUrl?: string;
-  price: string;
-  prerequisites: string;
+  prerequisites: string[];
+  rating: number;
+  instructor: {
+    id: string;
+    name: string;
+    avatar?: string;
+  };
+  enrolledStudents: number;
   lessons: Lesson[];
-  createdAt: string;
-  updatedAt: string;
+  discussions: {
+    id: string;
+    studentName: string;
+    question: string;
+    timestamp: string;
+    replies: {
+      id: string;
+      instructorName: string;
+      response: string;
+      timestamp: string;
+    }[];
+  }[];
 }

@@ -23,23 +23,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
-
-interface Quiz {
-  id: string;
-  question: string;
-  options: string[];
-  correctOption: number;
-}
-
-export interface Lesson {
-  id: string;
-  title: string;
-  description: string;
-  videoUrl: string;
-  materialUrl?: string;
-  hasQuiz: boolean;
-  quizzes: Quiz[];
-}
+import { Lesson, Quiz } from "@/types";
 
 interface LessonsFormProps {
   lessons: Lesson[];
@@ -133,6 +117,8 @@ export const LessonsForm = forwardRef<
         materialUrl: "",
         hasQuiz: false,
         quizzes: [],
+        duration: 0,
+        completions: 0,
       },
     ]);
   };

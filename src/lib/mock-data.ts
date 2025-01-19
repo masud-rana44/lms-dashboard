@@ -1,184 +1,181 @@
-import { DashboardStats, Sale, Course, CourseDetails } from "@/types";
+import { Course, User } from "@/types";
 
-export const sampleSales: Sale[] = [
+export const mockCourses: Course[] = [
   {
     id: "1",
-    studentName: "John Doe",
-    email: "john.doe@example.com",
-    courseName: "Web Development Fundamentals",
-    amount: 49.99,
-    date: "2024-03-20",
-  },
-  {
-    id: "2",
-    studentName: "Sarah Wilson",
-    email: "sarah.w@example.com",
-    courseName: "React Advanced Concepts",
-    amount: 79.99,
-    date: "2024-03-19",
-  },
-  {
-    id: "3",
-    studentName: "Michael Brown",
-    email: "m.brown@example.com",
-    courseName: "TypeScript Masterclass",
-    amount: 59.99,
-    date: "2024-03-19",
-  },
-  {
-    id: "4",
-    studentName: "Emma Davis",
-    email: "emma.d@example.com",
-    courseName: "UI/UX Design Principles",
-    amount: 89.99,
-    date: "2024-03-18",
-  },
-  {
-    id: "5",
-    studentName: "James Smith",
-    email: "james.s@example.com",
-    courseName: "Python for Beginners",
-    amount: 39.99,
-    date: "2024-03-18",
-  },
-];
-
-export const sampleCourses: Course[] = [
-  {
-    id: "1",
-    title: "Introduction to Web Development",
-    studentsCount: 156,
-    status: "published",
-    lastUpdated: "2024-03-20",
-  },
-  {
-    id: "2",
-    title: "Advanced React Patterns",
-    studentsCount: 89,
-    status: "published",
-    lastUpdated: "2024-03-18",
-  },
-  {
-    id: "3",
-    title: "TypeScript for Beginners",
-    studentsCount: 0,
-    status: "draft",
-    lastUpdated: "2024-03-15",
-  },
-  {
-    id: "4",
-    title: "CSS Masterclass",
-    studentsCount: 234,
-    status: "archived",
-    lastUpdated: "2024-02-28",
-  },
-];
-
-export const stats: DashboardStats = {
-  enrolledCount: 4,
-  inProgressCount: 2,
-  overallProgress: 65,
-  completedCount: 2,
-  completedThisMonth: 1,
-  certificatesCount: 2,
-  latestCertificate: "Web Development",
-  courses: [
-    {
-      id: "1",
-      title: "Web Development Fundamentals",
-      progress: 100,
-      status: "completed",
-      lastAccessed: "2024-03-15",
-    },
-    {
-      id: "2",
-      title: "React Advanced Concepts",
-      progress: 45,
-      status: "in-progress",
-      lastAccessed: "2024-03-20",
-    },
-    {
-      id: "3",
-      title: "TypeScript Masterclass",
-      progress: 0,
-      status: "not-started",
-      lastAccessed: "N/A",
-    },
-  ],
-};
-
-export const mockCourses: CourseDetails[] = [
-  {
-    id: "1",
-    title: "Web Development Fundamentals",
-    description: "Learn the basics of web development",
-    imageUrl: "/course-1.jpg",
-    price: 49.99,
-    category: "development",
-    level: "beginner",
+    title: "Advanced Web Development with React",
+    description:
+      "Master modern web development using React, Next.js, and TypeScript. Learn best practices, state management, and advanced patterns.",
+    price: 99.99,
+    imageUrl:
+      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=60",
+    prerequisites: ["Basic JavaScript knowledge", "HTML & CSS fundamentals"],
+    rating: 4.8,
     instructor: {
-      id: "i1",
-      name: "John Doe",
-      email: "john@example.com",
+      id: "inst1",
+      name: "Sarah Johnson",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop",
     },
+    enrolledStudents: 256,
     lessons: [
       {
         id: "l1",
-        title: "HTML Basics",
-        order: 1,
-        videoUrl: "https://example.com/videos/html-basics",
+        title: "Introduction to React Hooks",
+        description:
+          "Learn how to use React Hooks to manage state and side effects in functional components.",
+        videoUrl: "https://example.com/videos/react-hooks",
+        materialUrl: "https://example.com/materials/react-hooks.pdf",
+        duration: 45,
+        completions: 200,
+        hasQuiz: true,
+        quizzes: [
+          {
+            id: "q1",
+            question: "What is the purpose of useState Hook?",
+            options: [
+              "To manage component state",
+              "To handle side effects",
+              "To create refs",
+              "To optimize performance",
+            ],
+            correctOption: 0,
+          },
+        ],
       },
+    ],
+    discussions: [
       {
-        id: "l2",
-        title: "CSS Fundamentals",
-        order: 2,
-        videoUrl: "https://example.com/videos/css-fundamentals",
-      },
-      {
-        id: "l3",
-        title: "JavaScript Intro",
-        order: 3,
-        videoUrl: "https://example.com/videos/javascript-intro",
+        id: "d1",
+        studentName: "John Doe",
+        question: "How can I optimize React state management?",
+        timestamp: "2025-01-10T10:00:00Z",
+        replies: [
+          {
+            id: "r1",
+            instructorName: "Sarah Johnson",
+            response:
+              "Consider using React context or libraries like Redux for better scalability.",
+            timestamp: "2025-01-10T10:15:00Z",
+          },
+        ],
       },
     ],
   },
   {
     id: "2",
-    title: "React Masterclass",
-    description: "Advanced React concepts and patterns",
-    imageUrl: "/course-2.jpg",
-    price: 79.99,
-    category: "development",
-    level: "intermediate",
+    title: "Introduction to Machine Learning",
+    description:
+      "Get started with machine learning concepts, algorithms, and real-world applications using Python.",
+    price: 149.99,
+    imageUrl:
+      "https://plus.unsplash.com/premium_photo-1682124651258-410b25fa9dc0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFjaGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fHww",
+    prerequisites: ["Basic Python knowledge", "Linear algebra fundamentals"],
+    rating: 4.7,
     instructor: {
-      id: "i2",
-      name: "Sarah Wilson",
-      email: "sarah@example.com",
+      id: "inst2",
+      name: "John Doe",
+      avatar:
+        "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=100&auto=format&fit=crop",
     },
+    enrolledStudents: 320,
     lessons: [
       {
-        id: "l4",
-        title: "React Hooks",
-        order: 1,
-        videoUrl: "https://example.com/videos/react-hooks",
+        id: "l1",
+        title: "Understanding Supervised Learning",
+        description:
+          "Explore the fundamentals of supervised learning and key algorithms like regression and classification.",
+        videoUrl: "https://example.com/videos/supervised-learning",
+        duration: 50,
+        completions: 280,
+        hasQuiz: false,
+        quizzes: [],
       },
+    ],
+    discussions: [
       {
-        id: "l5",
-        title: "State Management",
-        order: 2,
-        videoUrl: "https://example.com/videos/state-management",
+        id: "d1",
+        studentName: "Emily Brown",
+        question: "What are the best practices for feature selection?",
+        timestamp: "2025-01-09T15:00:00Z",
+        replies: [
+          {
+            id: "r1",
+            instructorName: "John Doe",
+            response:
+              "Use techniques like mutual information and Lasso regression for feature selection.",
+            timestamp: "2025-01-09T15:30:00Z",
+          },
+        ],
       },
+    ],
+  },
+  {
+    id: "3",
+    title: "UI/UX Design Essentials",
+    description:
+      "Learn the principles of user interface and user experience design to create beautiful and functional designs.",
+    price: 79.99,
+    imageUrl:
+      "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVpfGVufDB8fDB8fHww",
+    prerequisites: [
+      "Basic design understanding",
+      "Familiarity with Figma or Sketch",
+    ],
+    rating: 4.9,
+    instructor: {
+      id: "inst3",
+      name: "Emily Davis",
+      avatar:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop",
+    },
+    enrolledStudents: 500,
+    lessons: [
       {
-        id: "l6",
-        title: "Performance Optimization",
-        order: 3,
-        videoUrl: "https://example.com/videos/performance-optimization",
+        id: "l1",
+        title: "Design Fundamentals",
+        description:
+          "Understand the core principles of design, including typography, color theory, and layout.",
+        videoUrl: "https://example.com/videos/design-fundamentals",
+        duration: 40,
+        completions: 450,
+        hasQuiz: true,
+        quizzes: [
+          {
+            id: "q1",
+            question: "What is the purpose of contrast in design?",
+            options: [
+              "To create visual interest and focus",
+              "To increase page load speed",
+              "To align elements consistently",
+              "To add more colors",
+            ],
+            correctOption: 0,
+          },
+        ],
+      },
+    ],
+    discussions: [
+      {
+        id: "d1",
+        studentName: "Michael Lee",
+        question: "How do I decide the color palette for my designs?",
+        timestamp: "2025-01-08T09:00:00Z",
+        replies: [
+          {
+            id: "r1",
+            instructorName: "Emily Davis",
+            response:
+              "Choose colors based on the brand identity and ensure proper contrast for readability.",
+            timestamp: "2025-01-08T09:20:00Z",
+          },
+        ],
       },
     ],
   },
 ];
 
-export const mockUsers = [
+export const mockUsers: User[] = [
   {
     id: 1,
     name: "Admin User",

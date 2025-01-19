@@ -25,9 +25,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Lesson, LessonsForm } from "./lessons-form";
+import { LessonsForm } from "./lessons-form";
 import { toast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import { Lesson } from "@/types";
 
 const courseFormSchema = z.object({
   title: z.string().min(3, "Title must be at least 3 characters"),
