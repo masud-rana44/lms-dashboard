@@ -52,3 +52,31 @@ export interface Sale {
   amount: number;
   date: string;
 }
+
+// Types
+export interface Quiz {
+  question: string;
+  options: string[];
+  correctOption: number;
+}
+
+export interface Lesson {
+  id: string;
+  title: string;
+  description: string;
+  videoUrl: string;
+  hasQuiz: boolean;
+  quiz?: Quiz;
+}
+
+export interface Course {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl?: string;
+  price: string;
+  prerequisites: string;
+  lessons: Lesson[];
+  createdAt: string;
+  updatedAt: string;
+}
