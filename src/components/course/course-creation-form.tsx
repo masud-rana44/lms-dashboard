@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Loader2, CheckCircle2 } from "lucide-react";
+import { useState, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { CheckCircle2 } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
   Form,
@@ -59,8 +58,6 @@ const steps = [
 ];
 
 export function CourseCreationForm() {
-  const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [lessons, setLessons] = useState<Lesson[]>([]);
 
@@ -77,50 +74,30 @@ export function CourseCreationForm() {
 
   const { isValid } = form.formState;
 
-  const onNext = async () => {
-    const fields =
-      steps[currentStep].id === "basic"
-        ? ["title", "description", "imageUrl"]
-        : steps[currentStep].id === "pricing"
-        ? ["price", "prerequisites"]
-        : [];
+  // Add ref to access lessons form validation
+  const lessonsFormRef = useRef<{ isFormsValid: () => boolean }>(null);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const output = await form.trigger(fields as any);
-    if (output) {
-      setCurrentStep((current) => current + 1);
+  const handleNext = () => {
+    if (currentStep === 1) {
+      if (!lessonsFormRef.current?.isFormsValid()) {
+        toast({
+          title: "Invalid Lessons",
+          description: "Please add at least one valid lesson to continue",
+          variant: "destructive",
+        });
+        return;
+      }
     }
+    setCurrentStep((step) => step + 1);
   };
 
   async function onSubmit(values: z.infer<typeof courseFormSchema>) {
-    try {
-      setIsLoading(true);
-      const response = await fetch("/api/courses", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to create course");
-      }
-
-      const data = await response.json();
+    if (currentStep === 2 && isValid) {
+      console.log({ ...values, lessons });
       toast({
-        title: "Success",
-        description: "Course created successfully",
+        title: "Course Created",
+        description: "Your course has been successfully created",
       });
-      router.push(`/dashboard/courses/${data.id}`);
-    } catch {
-      toast({
-        title: "Error",
-        description: "Something went wrong",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
     }
   }
 
@@ -229,7 +206,11 @@ export function CourseCreationForm() {
           )}
 
           {currentStep === 1 && (
-            <LessonsForm lessons={lessons} setLessons={setLessons} />
+            <LessonsForm
+              ref={lessonsFormRef}
+              lessons={lessons}
+              setLessons={setLessons}
+            />
           )}
 
           {currentStep === 2 && (
@@ -248,7 +229,12 @@ export function CourseCreationForm() {
                     <FormItem>
                       <FormLabel>Price ($)</FormLabel>
                       <FormControl>
-                        <Input type="number" step="0.01" {...field} />
+                        <Input
+                          placeholder="e.g. '9.99'"
+                          type="number"
+                          step="0.01"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -288,12 +274,11 @@ export function CourseCreationForm() {
               Previous
             </Button>
             {currentStep === steps.length - 1 ? (
-              <Button type="submit" disabled={isLoading || !isValid}>
-                {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              <Button type="submit" disabled={!isValid}>
                 Create Course
               </Button>
             ) : (
-              <Button type="button" onClick={onNext}>
+              <Button type="button" onClick={handleNext}>
                 Next
               </Button>
             )}
