@@ -40,10 +40,10 @@ export default function Courses() {
     );
   }
 
-  if (!user || (user && user.role === "student"))
+  if (!user || user.role === "admin")
     return (
       <div className="text-center mt-10 text-gray-600">
-        <p>You are don&apos;t have permission to view this page.</p>
+        <p>You don&apos;t have permission to view this page.</p>
       </div>
     );
 
@@ -59,7 +59,7 @@ export default function Courses() {
           </p>
         </div>
 
-        {(user?.role === "instructor" || user?.role === "admin") && (
+        {user?.role === "instructor" && (
           <Button
             size="lg"
             onClick={() => router.push("/dashboard/courses/create")}
@@ -81,6 +81,14 @@ export default function Courses() {
           />
         </div>
       </div>
+
+      {filteredCourses.length === 0 && (
+        <div className="flex items-center justify-center h-64 bg-gray-100 rounded-lg">
+          <p className="text-gray-500">
+            No courses found. Try changing the search query.
+          </p>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
         {filteredCourses.map((course) => (

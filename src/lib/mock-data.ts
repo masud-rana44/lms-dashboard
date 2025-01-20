@@ -25,8 +25,10 @@ export const mockCourses: Course[] = [
         title: "Introduction to React Hooks",
         description:
           "Learn how to use React Hooks to manage state and side effects in functional components.",
-        videoUrl: "https://example.com/videos/react-hooks",
-        materialUrl: "https://example.com/materials/react-hooks.pdf",
+        videoUrl:
+          "https://www.youtube.com/embed/cF2lQ_gZeA8?si=kxsg37PLTR5xDqbn",
+        materialUrl:
+          "https://www.rd.usda.gov/sites/default/files/pdf-sample_0.pdf",
         duration: 45,
         completions: 200,
         hasQuiz: true,
@@ -34,6 +36,46 @@ export const mockCourses: Course[] = [
           {
             id: "q1",
             question: "What is the purpose of useState Hook?",
+            options: [
+              "To manage component state",
+              "To handle side effects",
+              "To create refs",
+              "To optimize performance",
+            ],
+            correctOption: 0,
+          },
+        ],
+      },
+      {
+        id: "l2",
+        title: "useState Hook",
+        description:
+          "Learn how useState hook work in the modern react development.",
+        videoUrl:
+          "https://www.youtube.com/embed/lAW1Jmmr9hc?si=u449EmJOHvnepXLk",
+        materialUrl:
+          "https://www.rd.usda.gov/sites/default/files/pdf-sample_0.pdf",
+        duration: 45,
+        completions: 200,
+        hasQuiz: false,
+        quizzes: [],
+      },
+      {
+        id: "l3",
+        title: "useState with previous state",
+        description:
+          "Learn how to use React Hooks to manage state and side effects in functional components.",
+        videoUrl:
+          "https://www.youtube.com/embed/d0plTCQgsXs?si=_Zww_W1ox96RendH",
+        materialUrl:
+          "https://www.rd.usda.gov/sites/default/files/pdf-sample_0.pdf",
+        duration: 45,
+        completions: 200,
+        hasQuiz: true,
+        quizzes: [
+          {
+            id: "q1",
+            question: "What is the purpose of useEffect Hook?",
             options: [
               "To manage component state",
               "To handle side effects",

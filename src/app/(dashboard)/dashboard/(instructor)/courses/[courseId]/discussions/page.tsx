@@ -147,7 +147,7 @@ export default function CourseDiscussions() {
               <div className="flex items-start space-x-4">
                 <div className="h-10 w-10 rounded-full overflow-hidden">
                   <Image
-                    src="/assets/user-avater.webp"
+                    src="/assets/user-avatar.webp"
                     alt="Student avatar"
                     width={200}
                     height={200}
@@ -179,7 +179,7 @@ export default function CourseDiscussions() {
                     <div className="flex items-center space-x-2 mb-2">
                       <div className="h-8 w-8 rounded-full overflow-hidden">
                         <Image
-                          src={user?.avatar || "/assets/placeholder-avater.jpg"}
+                          src={user?.avatar || "/assets/placeholder-avatar.jpg"}
                           alt="Instructor avatar"
                           width={32}
                           height={32}
