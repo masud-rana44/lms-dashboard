@@ -57,8 +57,13 @@ export default function CourseDetails() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <div className="relative h-[300px] bg-gradient-to-r from-primary to-primary/80">
-        <div className="absolute inset-0 bg-black/40" />
+      <div
+        style={{
+          backgroundImage: `url(${course.imageUrl})`,
+        }}
+        className="relative h-[300px] bg-gradient-to-r from-primary to-primary/80 bg-cover bg-no-repeat bg-center"
+      >
+        <div className="absolute inset-0 bg-black/70" />
         <div className="container mx-auto px-4 h-full flex items-center relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-4xl font-bold text-white mb-4">
@@ -169,7 +174,10 @@ export default function CourseDetails() {
                           <Button
                             onClick={(e) => {
                               e.stopPropagation();
-                              downloadMaterial(lesson.materialUrl!);
+                              downloadMaterial(
+                                lesson.materialUrl!,
+                                lesson.title
+                              );
                             }}
                             variant="outline"
                             size="sm"
@@ -254,12 +262,12 @@ export default function CourseDetails() {
       </div>
 
       {/* Modals */}
-      {/* {activeLesson && (
+      {activeLesson && (
         <LessonModal
           lesson={activeLesson}
           onClose={() => setActiveLesson(null)}
         />
-      )} */}
+      )}
       {quizId && quiz && (
         <QuizModal quiz={quiz} onClose={() => setQuizId(null)} />
       )}

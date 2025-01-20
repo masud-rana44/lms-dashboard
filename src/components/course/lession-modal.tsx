@@ -37,7 +37,9 @@ export function LessonModal({ lesson, onClose }: LessonModalProps) {
 
           {lesson.materialUrl && (
             <Button
-              onClick={() => downloadMaterial(lesson.materialUrl!)}
+              onClick={() =>
+                downloadMaterial(lesson.materialUrl!, lesson.title)
+              }
               variant="outline"
               className="w-full"
             >

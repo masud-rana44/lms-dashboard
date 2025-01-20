@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import { mockCourses } from "@/lib/mock-data";
 import { Course, User } from "@/types";
 import { useUser } from "@/hooks/use-user";
+import Link from "next/link";
 
 export default function Courses() {
   const router = useRouter();
@@ -212,8 +213,10 @@ export function CourseCard({ course, user }: { course: Course; user: User }) {
         )}
 
         {user?.role === "student" && (
-          <Button className="w-full" size="lg">
-            Continue Learning
+          <Button asChild className="w-full" size="lg">
+            <Link href={`/dashboard/courses/${course.id}`}>
+              Continue Learning
+            </Link>
           </Button>
         )}
       </div>
