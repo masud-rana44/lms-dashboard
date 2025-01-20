@@ -24,6 +24,7 @@ import { mockCourses } from "@/lib/mock-data";
 import { useUser } from "@/hooks/use-user";
 import { QuizModal } from "@/components/course/quiz-modal";
 import { downloadMaterial } from "@/lib/utils";
+import { ReviewSection } from "@/components/course/review-section";
 
 export default function CourseDetails() {
   const { courseId } = useParams();
@@ -211,8 +212,7 @@ export default function CourseDetails() {
               </TabsContent>
 
               <TabsContent value="reviews">
-                {/* <ReviewSection courseId={course.id} /> */}
-                <p>Review Section</p>
+                <ReviewSection courseId={course.id} />
               </TabsContent>
             </Tabs>
           </div>

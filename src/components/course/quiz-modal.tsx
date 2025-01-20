@@ -25,7 +25,7 @@ export function QuizModal({ quiz, onClose }: QuizModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const totalQuestions = quiz ? 1 : 0; 
+  const totalQuestions = quiz ? 1 : 0;
 
   const handleSubmit = () => {
     if (selectedOption === null) return;
