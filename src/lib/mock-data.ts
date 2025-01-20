@@ -5,7 +5,7 @@ export const mockCourses: Course[] = [
     id: "1",
     title: "Advanced Web Development with React",
     description:
-      "Master modern web development using React, Next.js, and TypeScript. Learn best practices, state management, and advanced patterns.",
+      "Dive deep into modern web development with this comprehensive course on React, Next.js, and TypeScript. You'll learn industry-standard practices for building scalable, maintainable applications using the latest features and patterns. Starting with React fundamentals, you'll progress through advanced concepts like custom hooks, context API, and state management solutions. The course covers crucial topics including performance optimization, server-side rendering, API integration, and deployment strategies. You'll gain hands-on experience building real-world applications while learning best practices for code organization, testing, and debugging. Special emphasis is placed on TypeScript integration for type-safe development and Next.js for building production-ready applications. By the end of this course, you'll be equipped with the skills to architect complex web applications, implement advanced design patterns, and follow modern development workflows used by top tech companies.",
     price: 99.99,
     imageUrl:
       "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=60",
@@ -160,7 +160,7 @@ export const mockCourses: Course[] = [
     id: "2",
     title: "Introduction to Machine Learning",
     description:
-      "Get started with machine learning concepts, algorithms, and real-world applications using Python.",
+      "Embark on a comprehensive journey into the world of machine learning with this foundational course. You'll explore the theoretical underpinnings and practical applications of machine learning algorithms using Python. The curriculum covers essential concepts from data preprocessing and feature engineering to model selection and evaluation. Through hands-on projects, you'll implement various algorithms including linear regression, logistic regression, decision trees, and neural networks. Special attention is given to real-world applications, helping you understand how to solve complex problems in areas such as image recognition, natural language processing, and predictive analytics. You'll learn best practices for model optimization, cross-validation, and hyperparameter tuning while gaining practical experience with popular libraries like scikit-learn, TensorFlow, and PyTorch. By course completion, you'll have developed a robust understanding of machine learning principles and the ability to apply them to real-world scenarios.",
     price: 149.99,
     imageUrl:
       "https://plus.unsplash.com/premium_photo-1682124651258-410b25fa9dc0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFjaGluZSUyMGxlYXJuaW5nfGVufDB8fDB8fHww",
@@ -263,7 +263,7 @@ export const mockCourses: Course[] = [
     id: "3",
     title: "UI/UX Design Essentials",
     description:
-      "Learn the principles of user interface and user experience design to create beautiful and functional designs.",
+      "Master the art and science of user interface and user experience design in this comprehensive course. You'll develop a deep understanding of design thinking methodology, user research techniques, and the psychological principles behind effective user interactions. The curriculum covers essential topics including information architecture, wireframing, prototyping, and usability testing. You'll learn to create user-centered designs using industry-standard tools like Figma and Sketch, while exploring advanced concepts such as micro-interactions, accessibility standards, and responsive design principles. Through practical projects, you'll gain experience in conducting user interviews, creating user personas, developing user journey maps, and implementing design systems. Special emphasis is placed on modern design trends, mobile-first approaches, and creating inclusive designs that work for diverse user groups. By the end of this course, you'll have a professional portfolio and the skills to create intuitive, engaging user experiences.",
     price: 79.99,
     imageUrl:
       "https://images.unsplash.com/photo-1523726491678-bf852e717f6a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHVpfGVufDB8fDB8fHww",
@@ -379,7 +379,7 @@ export const mockCourses: Course[] = [
     id: "4",
     title: "Full-Stack Web Development",
     description:
-      "Learn both frontend and backend web development, including popular technologies like React, Node.js, and MongoDB.",
+      "Become a versatile full-stack developer with this comprehensive course covering both frontend and backend technologies. You'll master the entire web development stack, from creating responsive user interfaces with React to building robust server-side applications with Node.js. The course begins with frontend fundamentals including HTML5, CSS3, and modern JavaScript, then progresses to advanced React concepts including hooks, context, and Redux for state management. On the backend, you'll learn to build scalable APIs with Express.js, implement authentication and authorization, and work with both SQL and NoSQL databases. You'll gain hands-on experience with MongoDB, learn about RESTful architecture, and explore real-time communication with WebSockets. The course also covers essential development topics such as version control with Git, deployment strategies, security best practices, and performance optimization techniques. By the end, you'll be capable of building complete, production-ready web applications from scratch.",
     imageUrl:
       "https://plus.unsplash.com/premium_photo-1678565999332-1cde462f7b24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8d2Vic2l0ZXxlbnwwfHwwfHx8MA%3D%3D",
     price: 199.99,
@@ -470,7 +470,7 @@ export const mockCourses: Course[] = [
     id: "5",
     title: "Data Science Fundamentals",
     description:
-      "Master the basics of data science including statistics, data analysis, and visualization using Python.",
+      "Immerse yourself in the world of data science with this comprehensive course that bridges theory and practical application. You'll develop a strong foundation in statistical analysis, data visualization, and predictive modeling using Python and its powerful ecosystem of libraries. The curriculum begins with fundamental statistical concepts and probability theory, then progresses to advanced topics in data analysis, including hypothesis testing, regression analysis, and machine learning algorithms. You'll master essential tools like Pandas for data manipulation, Matplotlib and Seaborn for visualization, and scikit-learn for implementing machine learning models. The course emphasizes hands-on learning through real-world datasets, teaching you how to clean and preprocess data, perform exploratory data analysis, and build predictive models. You'll also learn best practices for data storytelling, creating impactful visualizations, and communicating insights to stakeholders. By the end of this course, you'll have the skills to tackle complex data analysis projects and drive data-informed decision making.",
     price: 129.99,
     imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500",
     prerequisites: ["Basic Python knowledge", "Basic statistics"],
@@ -604,7 +604,7 @@ export const mockCourses: Course[] = [
     id: "6",
     title: "Mobile App Development with React Native",
     description:
-      "Learn to build cross-platform mobile applications using React Native framework.",
+      "Transform your mobile development skills with this comprehensive course on React Native. You'll learn to build sophisticated, production-ready mobile applications that run natively on both iOS and Android platforms using a single codebase. The curriculum covers everything from setting up your development environment to deploying apps to the app stores. You'll master fundamental React Native concepts including components, navigation, state management, and styling with flexbox. Advanced topics include integrating native device features, implementing smooth animations, handling offline storage, and optimizing app performance. The course emphasizes practical learning through hands-on projects, teaching you how to create responsive layouts, implement authentication flows, and integrate with backend services. You'll also learn essential mobile development concepts such as push notifications, deep linking, and app store deployment requirements. By the end of this course, you'll be capable of building professional-grade mobile applications that provide native performance and user experience.",
     price: 159.99,
     imageUrl:
       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500",

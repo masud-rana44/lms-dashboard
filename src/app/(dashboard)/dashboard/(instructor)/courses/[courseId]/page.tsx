@@ -4,9 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import {
-  Book,
   Clock,
-  Download,
   Play,
   Star,
   Users,
@@ -23,8 +21,8 @@ import { LessonModal } from "@/components/course/lession-modal";
 import { mockCourses } from "@/lib/mock-data";
 import { useUser } from "@/hooks/use-user";
 import { QuizModal } from "@/components/course/quiz-modal";
-import { downloadMaterial } from "@/lib/utils";
 import { ReviewSection } from "@/components/course/review-section";
+import { cn } from "@/lib/utils";
 
 export default function CourseDetails() {
   const { courseId } = useParams();
@@ -33,15 +31,16 @@ export default function CourseDetails() {
   const [quizId, setQuizId] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
   const { user } = useUser();
+  const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
 
   useEffect(() => {
     const foundCourse = mockCourses.find((c: Course) => c.id === courseId);
     if (foundCourse) {
       setCourse(foundCourse);
-      const completedLessons = 3;
-      setProgress((completedLessons / foundCourse.lessons.length) * 100);
+      setProgress((completedLessons.length / foundCourse.lessons.length) * 100);
     }
-  }, [courseId]);
+  }, [courseId, completedLessons]);
 
   if (!course) return null;
 
@@ -53,6 +52,142 @@ export default function CourseDetails() {
         <p>You don&apos;t have permission to view this page.</p>
       </div>
     );
+
+  const handleLessonComplete = (lessonId: string) => {
+    if (!course) return;
+
+    setCompletedLessons((prev) => [...prev, lessonId]);
+
+    const currentIndex = course.lessons.findIndex((l) => l.id === lessonId);
+    const nextIndex = currentIndex + 1;
+
+    if (nextIndex < course.lessons.length) {
+      setCurrentLessonIndex(nextIndex);
+      setActiveLesson(course.lessons[nextIndex]);
+    } else {
+      setActiveLesson(null);
+    }
+  };
+
+  const handleStartLesson = (lessonId: string) => {
+    if (!course) return;
+    const lesson = course.lessons.find((l) => l.id === lessonId);
+    if (lesson) {
+      setActiveLesson(lesson);
+      setCurrentLessonIndex(course.lessons.indexOf(lesson));
+    }
+  };
+
+  const handleContinueLearning = () => {
+    if (!course) return;
+
+    // Reset all state when starting again
+    setCompletedLessons([]);
+    setProgress(0);
+    setCurrentLessonIndex(0);
+    setActiveLesson(course.lessons[0]);
+    setQuizId(null);
+  };
+
+  const isLessonCompleted = (lessonId: string) => {
+    return completedLessons.includes(lessonId);
+  };
+
+  const renderLessons = () => (
+    <div className="space-y-4">
+      {course?.lessons.map((lesson, index) => (
+        <Card
+          key={lesson.id}
+          className={cn(
+            "p-4 hover:shadow-md transition-shadow cursor-pointer",
+            currentLessonIndex === index && "border-primary"
+          )}
+          onClick={() => setActiveLesson(lesson)}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
+                {completedLessons.includes(lesson.id) ? (
+                  <CheckCircle className="h-5 w-5 text-primary" />
+                ) : (
+                  <Play className="h-5 w-5 text-primary" />
+                )}
+              </div>
+              <div>
+                <h3 className="font-semibold">{lesson.title}</h3>
+                <p className="text-sm text-gray-500">{lesson.duration} mins</p>
+              </div>
+            </div>
+            <ChevronRight className="h-5 w-5 text-gray-400" />
+          </div>
+        </Card>
+      ))}
+    </div>
+  );
+
+  const renderSidebar = () => (
+    <Card className="p-6 sticky top-6">
+      <div className="space-y-6">
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Your Progress</h3>
+          <Progress value={progress} className="h-2" />
+          <p className="text-sm text-gray-500 mt-2">
+            {Math.round(progress)}% Complete
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm">
+            <span>Price</span>
+            <span className="font-semibold">${course.price}</span>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span>Lessons</span>
+            <span className="font-semibold">{course.lessons.length}</span>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span>Total Duration</span>
+            <span className="font-semibold">
+              {course.lessons.reduce((acc, lesson) => acc + lesson.duration, 0)}{" "}
+              mins
+            </span>
+          </div>
+        </div>
+
+        {progress === 100 ? (
+          <div className="space-y-4">
+            <div className="p-4 rounded-lg bg-green-50 border border-green-200 text-center">
+              <p className="font-medium text-green-800">🎉 Course Completed!</p>
+              <p className="text-sm text-green-600">
+                Congratulations on finishing the course!
+              </p>
+            </div>
+            <Button
+              className="w-full"
+              size="lg"
+              onClick={handleContinueLearning}
+            >
+              Start Again
+            </Button>
+          </div>
+        ) : (
+          <Button
+            className="w-full"
+            size="lg"
+            onClick={() => {
+              if (progress === 0 && course.lessons.length > 0) {
+                handleStartLesson(course.lessons[0].id);
+              } else {
+                handleContinueLearning();
+              }
+            }}
+          >
+            {progress === 0 ? "Start Course" : "Continue Learning"}
+          </Button>
+        )}
+      </div>
+    </Card>
+  );
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -147,63 +282,7 @@ export default function CourseDetails() {
               </TabsContent>
 
               <TabsContent value="lessons" className="space-y-4">
-                {course.lessons.map((lesson, index) => (
-                  <Card
-                    key={lesson.id}
-                    className="p-4 hover:shadow-md transition-shadow cursor-pointer"
-                    onClick={() => setActiveLesson(lesson)}
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4">
-                        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                          {index < 3 ? (
-                            <CheckCircle className="h-5 w-5 text-primary" />
-                          ) : (
-                            <Play className="h-5 w-5 text-primary" />
-                          )}
-                        </div>
-                        <div>
-                          <h3 className="font-semibold">{lesson.title}</h3>
-                          <p className="text-sm text-gray-500">
-                            {lesson.duration} mins
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-4">
-                        {lesson.materialUrl && (
-                          <Button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              downloadMaterial(
-                                lesson.materialUrl!,
-                                lesson.title
-                              );
-                            }}
-                            variant="outline"
-                            size="sm"
-                          >
-                            <Download className="h-4 w-4 mr-2" />
-                            Materials
-                          </Button>
-                        )}
-                        {lesson.hasQuiz && (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setQuizId(lesson.id);
-                            }}
-                          >
-                            <Book className="h-4 w-4 mr-2" />
-                            Take Quiz
-                          </Button>
-                        )}
-                        <ChevronRight className="h-5 w-5 text-gray-400" />
-                      </div>
-                    </div>
-                  </Card>
-                ))}
+                {renderLessons()}
               </TabsContent>
 
               <TabsContent value="discussions">
@@ -217,46 +296,7 @@ export default function CourseDetails() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
-            <Card className="p-6 sticky top-6">
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Your Progress</h3>
-                  <Progress value={progress} className="h-2" />
-                  <p className="text-sm text-gray-500 mt-2">
-                    {Math.round(progress)}% Complete
-                  </p>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>Price</span>
-                    <span className="font-semibold">${course.price}</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Lessons</span>
-                    <span className="font-semibold">
-                      {course.lessons.length}
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>Total Duration</span>
-                    <span className="font-semibold">
-                      {course.lessons.reduce(
-                        (acc, lesson) => acc + lesson.duration,
-                        0
-                      )}{" "}
-                      mins
-                    </span>
-                  </div>
-                </div>
-
-                <Button className="w-full" size="lg">
-                  {progress === 0 ? "Start Course" : "Continue Learning"}
-                </Button>
-              </div>
-            </Card>
-          </div>
+          <div className="space-y-6">{renderSidebar()}</div>
         </div>
       </div>
 
@@ -265,6 +305,9 @@ export default function CourseDetails() {
         <LessonModal
           lesson={activeLesson}
           onClose={() => setActiveLesson(null)}
+          onComplete={handleLessonComplete}
+          isCompleted={isLessonCompleted(activeLesson.id)}
+          onTakeQuiz={(lessonId) => setQuizId(lessonId)}
         />
       )}
       {quizId && quiz && (
