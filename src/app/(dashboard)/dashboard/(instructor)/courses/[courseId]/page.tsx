@@ -45,8 +45,7 @@ export default function CourseDetails() {
 
   if (!course) return null;
 
-  const quiz = course.lessons.find((lesson) => lesson.id === quizId)
-    ?.quizzes[0];
+  const quiz = course.lessons.find((lesson) => lesson.id === quizId)?.quizzes;
 
   if (user?.role === "admin" || user?.role === "instructor")
     return (

@@ -43,6 +43,45 @@ export const mockCourses: Course[] = [
             ],
             correctOption: 0,
           },
+          {
+            id: "q2",
+            question: "What does useState return?",
+            options: [
+              "Just the current state value",
+              "Just the setter function",
+              "An array with current state and setter function",
+              "A single state object",
+            ],
+            correctOption: 2,
+          },
+          {
+            id: "q3",
+            question: "Which is the correct way to declare a state variable?",
+            options: [
+              "const count = useState(0)",
+              "const {count} = useState(0)",
+              "const count = setState(0)",
+              "const [count, setCount] = useState(0)",
+            ],
+            correctOption: 3,
+          },
+          {
+            id: "q4",
+            question: "When does React re-render a component?",
+            options: [
+              "When state or props change",
+              "Only when props change",
+              "Only when state changes",
+              "On every function call",
+            ],
+            correctOption: 0,
+          },
+          {
+            id: "q5",
+            question: "What is the initial state in: useState()?",
+            options: ["null", "undefined", "0", "An empty string"],
+            correctOption: 1,
+          },
         ],
       },
       {

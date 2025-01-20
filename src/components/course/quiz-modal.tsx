@@ -16,7 +16,7 @@ import { Progress } from "@/components/ui/progress";
 import type { Quiz } from "@/types";
 
 interface QuizModalProps {
-  quiz: Quiz;
+  quiz: Quiz[];
   onClose: () => void;
 }
 
@@ -25,13 +25,14 @@ export function QuizModal({ quiz, onClose }: QuizModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [score, setScore] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const totalQuestions = quiz ? 1 : 0;
+  const totalQuestions = quiz?.length || 0;
+  const MARKS_PER_QUESTION = 10;
 
   const handleSubmit = () => {
     if (selectedOption === null) return;
 
-    if (selectedOption === quiz.correctOption) {
-      setScore(score + 1);
+    if (selectedOption === quiz[currentQuestion].correctOption) {
+      setScore(score + MARKS_PER_QUESTION);
     }
     setIsSubmitted(true);
   };
@@ -46,7 +47,18 @@ export function QuizModal({ quiz, onClose }: QuizModalProps) {
     }
   };
 
-  if (!quiz) return null;
+  const handleStartAgain = () => {
+    setCurrentQuestion(0);
+    setScore(0);
+    setSelectedOption(null);
+    setIsSubmitted(false);
+  };
+
+  if (!quiz || quiz.length === 0) return null;
+
+  const currentQuiz = quiz[currentQuestion];
+  const totalPossibleScore = totalQuestions * MARKS_PER_QUESTION;
+  const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100;
 
   return (
     <Dialog open onOpenChange={onClose}>
@@ -63,28 +75,28 @@ export function QuizModal({ quiz, onClose }: QuizModalProps) {
                 Question {currentQuestion + 1} of {totalQuestions}
               </span>
               <span>
-                Score: {score}/{totalQuestions}
+                Score: {score}/{totalPossibleScore}
               </span>
             </div>
-            <Progress value={((currentQuestion + 1) / totalQuestions) * 100} />
+            <Progress value={progressPercentage} />
           </div>
 
           {/* Question */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">{quiz.question}</h3>
+            <h3 className="text-lg font-semibold">{currentQuiz.question}</h3>
 
             <RadioGroup
-              value={selectedOption?.toString()}
+              value={selectedOption !== null ? selectedOption.toString() : ""}
               onValueChange={(value) => setSelectedOption(parseInt(value))}
               className="space-y-3"
               disabled={isSubmitted}
             >
-              {quiz.options.map((option: string, index: number) => (
+              {currentQuiz.options.map((option: string, index: number) => (
                 <div
                   key={index}
                   className={`flex items-center space-x-3 p-4 rounded-lg border ${
                     isSubmitted
-                      ? index === quiz.correctOption
+                      ? index === currentQuiz.correctOption
                         ? "border-green-500 bg-green-50"
                         : index === selectedOption
                         ? "border-red-500 bg-red-50"
@@ -104,7 +116,7 @@ export function QuizModal({ quiz, onClose }: QuizModalProps) {
                   </Label>
                   {isSubmitted && (
                     <>
-                      {index === quiz.correctOption ? (
+                      {index === currentQuiz.correctOption ? (
                         <CheckCircle className="h-5 w-5 text-green-500" />
                       ) : index === selectedOption ? (
                         <XCircle className="h-5 w-5 text-red-500" />
@@ -119,32 +131,37 @@ export function QuizModal({ quiz, onClose }: QuizModalProps) {
           {isSubmitted && (
             <div
               className={`p-4 rounded-lg ${
-                selectedOption === quiz.correctOption
+                selectedOption === currentQuiz.correctOption
                   ? "bg-green-50 border border-green-200"
                   : "bg-red-50 border border-red-200"
               }`}
             >
               <p
                 className={`font-medium ${
-                  selectedOption === quiz.correctOption
+                  selectedOption === currentQuiz.correctOption
                     ? "text-green-800"
                     : "text-red-800"
                 }`}
               >
-                {selectedOption === quiz.correctOption
+                {selectedOption === currentQuiz.correctOption
                   ? "Correct! Well done!"
                   : "Incorrect. Try again!"}
               </p>
+            </div>
+          )}
+
+          {isSubmitted && currentQuestion + 1 === totalQuestions && (
+            <div className="p-4 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="font-medium text-blue-800">Quiz Complete!</p>
               <p className="mt-2 text-gray-600">
-                Explanation: The useState Hook allows you to add state to
-                functional components, making it possible to track and update
-                values over time.
+                Final Score: {score} out of {totalPossibleScore} (
+                {Math.round((score / totalPossibleScore) * 100)}%)
               </p>
             </div>
           )}
         </div>
 
-        <DialogFooter>
+        <DialogFooter className="flex flex-col sm:flex-row gap-2">
           {!isSubmitted ? (
             <Button
               onClick={handleSubmit}
@@ -154,11 +171,26 @@ export function QuizModal({ quiz, onClose }: QuizModalProps) {
               Submit Answer
             </Button>
           ) : (
-            <Button onClick={handleNext} className="w-full sm:w-auto">
-              {currentQuestion + 1 < totalQuestions
-                ? "Next Question"
-                : "Finish Quiz"}
-            </Button>
+            <>
+              {currentQuestion + 1 === totalQuestions ? (
+                <>
+                  <Button
+                    variant="outline"
+                    onClick={handleStartAgain}
+                    className="w-full sm:w-auto"
+                  >
+                    Start Again
+                  </Button>
+                  <Button onClick={onClose} className="w-full sm:w-auto">
+                    Finish Quiz
+                  </Button>
+                </>
+              ) : (
+                <Button onClick={handleNext} className="w-full sm:w-auto">
+                  Next Question
+                </Button>
+              )}
+            </>
           )}
         </DialogFooter>
       </DialogContent>
