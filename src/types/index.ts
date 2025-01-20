@@ -49,7 +49,7 @@ export interface Course {
   title: string;
   description: string;
   price: number;
-  imageUrl?: string;
+  imageUrl: string;
   prerequisites: string[];
   rating: number;
   instructor: {
@@ -59,17 +59,5 @@ export interface Course {
   };
   enrolledStudents: number;
   lessons: Lesson[];
-  // discussions: {
-  //   id: string;
-  //   studentName: string;
-  //   question: string;
-  //   timestamp: string;
-  //   replies: {
-  //     id: string;
-  //     instructorName: string;
-  //     response: string;
-  //     timestamp: string;
-  //   }[];
-  // }[];
   queries?: Query[];
 }

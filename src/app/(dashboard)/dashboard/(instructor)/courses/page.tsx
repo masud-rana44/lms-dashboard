@@ -49,7 +49,7 @@ export default function Courses() {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-wrap gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">My Courses</h1>
           <p className="mt-2 text-gray-500">

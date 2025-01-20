@@ -16,7 +16,7 @@ export function StatsCard({
   value,
 }: StatsCardProps) {
   return (
-    <div className="p-4 flex items-center space-x-4">
+    <div className="p-4 flex items-center space-x-4 border rounded-lg">
       <div className={`p-3 rounded-full ${bgColor}`}>
         <div className={`h-6 w-6 ${textColor}`}>{icon}</div>
       </div>

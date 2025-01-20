@@ -190,6 +190,8 @@ export const mockCourses: Course[] = [
     title: "Full-Stack Web Development",
     description:
       "Learn both frontend and backend web development, including popular technologies like React, Node.js, and MongoDB.",
+    imageUrl:
+      "https://plus.unsplash.com/premium_photo-1678565999332-1cde462f7b24?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8d2Vic2l0ZXxlbnwwfHwwfHx8MA%3D%3D",
     price: 199.99,
     prerequisites: ["Basic programming knowledge"],
     rating: 4.6,

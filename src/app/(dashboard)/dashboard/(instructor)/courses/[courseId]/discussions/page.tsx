@@ -77,7 +77,7 @@ export default function CourseDiscussions() {
   return (
     <div>
       {/* Analytics Section */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <StatsCard
           icon={<MessageSquare />}
           bgColor="bg-blue-100"
