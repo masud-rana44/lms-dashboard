@@ -14,6 +14,24 @@ export interface Quiz {
   correctOption: number;
 }
 
+export interface Answer {
+  id: string;
+  queryId: string;
+  userId: string;
+  content: string;
+  createdAt: string;
+}
+
+export interface Query {
+  id: string;
+  studentId: string;
+  title: string;
+  description: string;
+  status: "open" | "answered";
+  createdAt: string;
+  answers?: Answer[];
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -41,16 +59,17 @@ export interface Course {
   };
   enrolledStudents: number;
   lessons: Lesson[];
-  discussions: {
-    id: string;
-    studentName: string;
-    question: string;
-    timestamp: string;
-    replies: {
-      id: string;
-      instructorName: string;
-      response: string;
-      timestamp: string;
-    }[];
-  }[];
+  // discussions: {
+  //   id: string;
+  //   studentName: string;
+  //   question: string;
+  //   timestamp: string;
+  //   replies: {
+  //     id: string;
+  //     instructorName: string;
+  //     response: string;
+  //     timestamp: string;
+  //   }[];
+  // }[];
+  queries?: Query[];
 }

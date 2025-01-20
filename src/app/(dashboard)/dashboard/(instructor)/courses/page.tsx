@@ -51,7 +51,7 @@ export default function Courses() {
     <div className="space-y-8">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Courses</h1>
+          <h1 className="text-3xl font-bold text-gray-900">My Courses</h1>
           <p className="mt-2 text-gray-500">
             {user?.role === "instructor"
               ? "Manage your courses and track student engagement"
@@ -159,7 +159,7 @@ export function CourseCard({ course, user }: { course: Course; user: User }) {
               </div>
               <div className="flex items-center text-gray-600">
                 <MessageSquare className="h-4 w-4 mr-1" />
-                <span>{course.discussions.length} Discussions</span>
+                <span>{course.queries?.length || 0} Discussions</span>
               </div>
             </div>
 

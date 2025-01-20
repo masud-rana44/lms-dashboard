@@ -1,5 +1,6 @@
 import { Course, User } from "@/types";
 
+// mockData.ts
 export const mockCourses: Course[] = [
   {
     id: "1",
@@ -44,19 +45,32 @@ export const mockCourses: Course[] = [
         ],
       },
     ],
-    discussions: [
+    queries: [
       {
-        id: "d1",
-        studentName: "John Doe",
-        question: "How can I optimize React state management?",
-        timestamp: "2025-01-10T10:00:00Z",
-        replies: [
+        id: "q1",
+        studentId: "s1",
+        title: "How to install Node.js?",
+        description:
+          "I am having trouble installing Node.js on my Windows machine. Can someone help me with the steps?",
+        status: "open",
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: "q2",
+        studentId: "s2",
+        title: "How to use React hooks?",
+        description:
+          "I am new to React and having trouble understanding how to use hooks. Can someone explain it to me?",
+        status: "answered",
+        createdAt: new Date().toISOString(),
+        answers: [
           {
-            id: "r1",
-            instructorName: "Sarah Johnson",
-            response:
-              "Consider using React context or libraries like Redux for better scalability.",
-            timestamp: "2025-01-10T10:15:00Z",
+            id: "a1",
+            queryId: "q2",
+            userId: "inst1",
+            content:
+              "React hooks let you use state and other React features without writing a class. Start with useState for managing state.",
+            createdAt: new Date().toISOString(),
           },
         ],
       },
@@ -92,21 +106,15 @@ export const mockCourses: Course[] = [
         quizzes: [],
       },
     ],
-    discussions: [
+    queries: [
       {
-        id: "d1",
-        studentName: "Emily Brown",
-        question: "What are the best practices for feature selection?",
-        timestamp: "2025-01-09T15:00:00Z",
-        replies: [
-          {
-            id: "r1",
-            instructorName: "John Doe",
-            response:
-              "Use techniques like mutual information and Lasso regression for feature selection.",
-            timestamp: "2025-01-09T15:30:00Z",
-          },
-        ],
+        id: "q3",
+        studentId: "s3",
+        title: "Best practices for feature selection?",
+        description:
+          "What are the best practices for feature selection in machine learning?",
+        status: "open",
+        createdAt: new Date().toISOString(),
       },
     ],
   },
@@ -142,7 +150,7 @@ export const mockCourses: Course[] = [
         hasQuiz: true,
         quizzes: [
           {
-            id: "q1",
+            id: "q4",
             question: "What is the purpose of contrast in design?",
             options: [
               "To create visual interest and focus",
@@ -155,23 +163,43 @@ export const mockCourses: Course[] = [
         ],
       },
     ],
-    discussions: [
+    queries: [
       {
-        id: "d1",
-        studentName: "Michael Lee",
-        question: "How do I decide the color palette for my designs?",
-        timestamp: "2025-01-08T09:00:00Z",
-        replies: [
+        id: "q4",
+        studentId: "s4",
+        title: "How to choose a color palette?",
+        description:
+          "I am unsure how to decide on a color palette for my designs. Any suggestions?",
+        status: "answered",
+        createdAt: new Date().toISOString(),
+        answers: [
           {
-            id: "r1",
-            instructorName: "Emily Davis",
-            response:
-              "Choose colors based on the brand identity and ensure proper contrast for readability.",
-            timestamp: "2025-01-08T09:20:00Z",
+            id: "a2",
+            queryId: "q4",
+            userId: "inst3",
+            content:
+              "Choose colors that reflect the brand identity and ensure proper contrast for readability.",
+            createdAt: new Date().toISOString(),
           },
         ],
       },
     ],
+  },
+  {
+    id: "4",
+    title: "Full-Stack Web Development",
+    description:
+      "Learn both frontend and backend web development, including popular technologies like React, Node.js, and MongoDB.",
+    price: 199.99,
+    prerequisites: ["Basic programming knowledge"],
+    rating: 4.6,
+    instructor: {
+      id: "inst4",
+      name: "James Carter",
+    },
+    enrolledStudents: 700,
+    lessons: [],
+    queries: [],
   },
 ];
 
