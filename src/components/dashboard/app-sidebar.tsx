@@ -15,28 +15,35 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { Home, BookOpen, Users, BarChart, Settings } from "lucide-react";
+import { useUser } from "@/hooks/use-user";
 
-const navigation = {
+const navigationLinks = {
   admin: [
-    { name: "Dashboard", href: "/dashboard", icon: Home },
-    { name: "Users", href: "/dashboard/users", icon: Users },
-    { name: "Analytics", href: "/dashboard/analytics", icon: BarChart },
-    { name: "Settings", href: "/dashboard/settings", icon: Settings },
+    { name: "Dashboard", href: "/admin/dashboard", icon: Home },
+    { name: "Users", href: "/admin/users", icon: Users },
+    { name: "Roles & Permissions", href: "/admin/roles", icon: Settings },
+    { name: "Analytics", href: "/admin/analytics", icon: BarChart },
+    { name: "Reports", href: "/admin/reports", icon: BarChart },
   ],
   instructor: [
-    { name: "Dashboard", href: "/dashboard", icon: Home },
-    { name: "My Courses", href: "/dashboard/courses", icon: BookOpen },
-    { name: "Analytics", href: "/dashboard/analytics", icon: BarChart },
+    { name: "Dashboard", href: "/instructor/dashboard", icon: Home },
+    { name: "My Courses", href: "/instructor/courses", icon: BookOpen },
+    { name: "Create Course", href: "/instructor/courses/new", icon: Settings },
+    { name: "Engagement", href: "/instructor/engagement", icon: BarChart },
+    { name: "Queries", href: "/instructor/queries", icon: Users },
   ],
   student: [
-    { name: "Dashboard", href: "/dashboard", icon: Home },
-    { name: "My Courses", href: "/dashboard/courses", icon: BookOpen },
+    { name: "Dashboard", href: "/student/dashboard", icon: Home },
+    { name: "My Courses", href: "/student/courses", icon: BookOpen },
+    { name: "Feedback", href: "/student/feedback", icon: Settings },
   ],
 };
 
-const userNavigation = navigation["instructor"];
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useUser();
+
+  const userNavigation = navigationLinks[user?.role || "student"];
+
   return (
     <Sidebar variant="inset" {...props}>
       <SidebarHeader>
