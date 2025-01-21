@@ -89,7 +89,6 @@ export const authConfig: NextAuthConfig = {
       // Add token info to the session
       if (session.user) {
         session.user.id = token.id as string;
-        // session.user.role = token.role as string;
         session.user.email = token.email as string;
       }
 

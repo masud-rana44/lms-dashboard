@@ -3,7 +3,6 @@ import { getToken } from "next-auth/jwt";
 
 export async function middleware(req: NextRequest) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-  console.log({ token });
 
   const { pathname } = req.nextUrl;
 
@@ -11,7 +10,6 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  // Role-based access control
   if (pathname.startsWith("/admin") && token.role !== "admin") {
     return NextResponse.redirect(new URL("/403", req.url));
   }
@@ -22,9 +20,25 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/403", req.url));
   }
 
+  if (pathname === "/" || pathname === "/dashboard") {
+    if (token.role === "admin") {
+      return NextResponse.redirect(new URL("/admin/dashboard", req.url));
+    } else if (token.role === "instructor") {
+      return NextResponse.redirect(new URL("/instructor/dashboard", req.url));
+    } else if (token.role === "student") {
+      return NextResponse.redirect(new URL("/student/dashboard", req.url));
+    }
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/admin/:path*", "/instructor/:path*", "/student/:path*"],
+  matcher: [
+    "/admin/:path*",
+    "/instructor/:path*",
+    "/student/:path*",
+    "/dashboard",
+    "/",
+  ],
 };
