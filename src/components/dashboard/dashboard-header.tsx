@@ -22,7 +22,7 @@ export default function DashboardHeader() {
       .filter((segment) => segment !== "" && segment !== "dashboard");
 
     return segments.map((segment, index) => {
-      const href = `/dashboard/${segments.slice(0, index + 1).join("/")}`;
+      const href = `/${segments.slice(0, index + 1).join("/")}`;
       const label = segment
         .split("-")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -45,9 +45,9 @@ export default function DashboardHeader() {
         <Separator orientation="vertical" className="mr-2 h-4" />
         <Breadcrumb>
           <BreadcrumbList>
-            <BreadcrumbItem>
+            {/* <BreadcrumbItem>
               <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
-            </BreadcrumbItem>
+            </BreadcrumbItem> */}
             {breadcrumbs.map(({ href, label, isLast }) => (
               <BreadcrumbItem key={href}>
                 <BreadcrumbSeparator />

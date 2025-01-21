@@ -96,7 +96,7 @@ export function CourseForm({ initialData, onSubmit }: CourseFormProps) {
         initialData ? "updated" : "created"
       } successfully!`,
     });
-    router.push("/dashboard/courses");
+    router.push("/instructor/courses");
   };
 
   return (
@@ -214,7 +214,7 @@ export function CourseForm({ initialData, onSubmit }: CourseFormProps) {
           <Button
             type="button"
             variant="outline"
-            onClick={() => router.push("/dashboard/courses")}
+            onClick={() => router.push("/instructor/courses")}
           >
             Cancel
           </Button>
