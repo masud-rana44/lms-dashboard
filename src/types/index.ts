@@ -53,7 +53,7 @@ export interface Course {
   prerequisites: string[];
   rating: number;
   instructor: {
-    id: string;
+    id: number;
     name: string;
     avatar?: string;
   };

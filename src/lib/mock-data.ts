@@ -12,8 +12,8 @@ export const mockCourses: Course[] = [
     prerequisites: ["Basic JavaScript knowledge", "HTML & CSS fundamentals"],
     rating: 4.8,
     instructor: {
-      id: "inst1",
-      name: "Sarah Johnson",
+      id: 2,
+      name: "Instructor",
       avatar:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop",
     },
@@ -167,8 +167,8 @@ export const mockCourses: Course[] = [
     prerequisites: ["Basic Python knowledge", "Linear algebra fundamentals"],
     rating: 4.7,
     instructor: {
-      id: "inst2",
-      name: "John Doe",
+      id: 2,
+      name: "Instructor",
       avatar:
         "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=100&auto=format&fit=crop",
     },
@@ -273,7 +273,7 @@ export const mockCourses: Course[] = [
     ],
     rating: 4.9,
     instructor: {
-      id: "inst3",
+      id: 4,
       name: "Emily Davis",
       avatar:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop",
@@ -386,8 +386,10 @@ export const mockCourses: Course[] = [
     prerequisites: ["Basic programming knowledge"],
     rating: 4.6,
     instructor: {
-      id: "inst4",
-      name: "James Carter",
+      id: 2,
+      name: "Instructor",
+      avatar:
+        "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=100",
     },
     enrolledStudents: 700,
     lessons: [
@@ -476,7 +478,7 @@ export const mockCourses: Course[] = [
     prerequisites: ["Basic Python knowledge", "Basic statistics"],
     rating: 4.8,
     instructor: {
-      id: "inst5",
+      id: 4,
       name: "Rachel Green",
       avatar:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100",
@@ -611,7 +613,7 @@ export const mockCourses: Course[] = [
     prerequisites: ["JavaScript knowledge", "React basics"],
     rating: 4.7,
     instructor: {
-      id: "inst6",
+      id: 2,
       name: "Mike Ross",
       avatar:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100",

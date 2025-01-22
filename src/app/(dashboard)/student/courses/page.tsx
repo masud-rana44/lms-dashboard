@@ -57,6 +57,14 @@ export default function StudentCourses() {
         </div>
       </div>
 
+      {filteredCourses.length === 0 && (
+        <div className="flex items-center justify-center h-64 bg-gray-100 rounded-lg">
+          <p className="text-gray-500">
+            No courses found. Try changing the search query.
+          </p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredCourses.map((course) => (
           <CourseCard key={course.id} course={course} user={user} />

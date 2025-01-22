@@ -21,6 +21,16 @@ import { Card } from "@/components/ui/card";
 import { LessonForm } from "./lesson-form";
 import type { Course } from "@/types";
 import { toast } from "@/hooks/use-toast";
+import { useUser } from "@/hooks/use-user";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { mockCourses } from "@/lib/mock-data";
 
 const courseSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -40,6 +50,7 @@ interface CourseFormProps {
 
 export function CourseForm({ initialData, onSubmit }: CourseFormProps) {
   const router = useRouter();
+  const { user } = useUser();
   const [prerequisites, setPrerequisites] = useState<string[]>(
     initialData?.prerequisites || []
   );
@@ -81,10 +92,9 @@ export function CourseForm({ initialData, onSubmit }: CourseFormProps) {
       enrolledStudents: initialData?.enrolledStudents || 0,
       imageUrl: initialData?.imageUrl || "",
       instructor: initialData?.instructor || {
-        id: "inst1",
-        name: "Sarah Johnson",
-        avatar:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop",
+        id: user.id,
+        name: user.name,
+        avatar: user.avatar,
       },
       queries: initialData?.queries || [],
     };
@@ -99,12 +109,52 @@ export function CourseForm({ initialData, onSubmit }: CourseFormProps) {
     router.push("/instructor/courses");
   };
 
+  const handleDelete = () => {
+    const courseIdx = mockCourses.findIndex((c) => c.id === initialData?.id);
+    mockCourses.splice(courseIdx, 1);
+    toast({
+      title: "Course Deleted",
+      description: "The course has been deleted successfully.",
+    });
+    router.push("/instructor/courses");
+  };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
         <Card className="p-6">
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold">Course Details</h2>
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-bold">Course Details</h2>
+              {initialData && (
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="destructive" size="sm">
+                      <Trash2 className="h-4 w-4 mr-2" />
+                      Delete Course
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogTitle>Confirm Deletion</DialogTitle>
+                    <DialogDescription>
+                      Are you sure you want to delete this course? This action
+                      cannot be undone.
+                    </DialogDescription>
+                    <DialogFooter>
+                      <Button
+                        variant="outline"
+                        onClick={() => router.push("/instructor/courses")}
+                      >
+                        Cancel
+                      </Button>
+                      <Button variant="destructive" onClick={handleDelete}>
+                        Delete
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              )}
+            </div>
 
             <FormField
               control={form.control}
