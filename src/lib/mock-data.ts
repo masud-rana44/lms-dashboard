@@ -764,3 +764,36 @@ export const mockUsers: User[] = [
     role: "student",
   },
 ];
+
+export const leaderboardData = [
+  {
+    id: 1,
+    name: "Liam Smith",
+    avatar: "https://avatar.iran.liara.run/public/1.jpg",
+    points: 1200,
+  },
+  {
+    id: 2,
+    name: "Emma Brown",
+    avatar: "https://avatar.iran.liara.run/public/2.jpg",
+    points: 1150,
+  },
+  {
+    id: 3,
+    name: "Noah Johnson",
+    avatar: "https://avatar.iran.liara.run/public/3.jpg",
+    points: 1120,
+  },
+  {
+    id: 4,
+    name: "Olivia Davis",
+    avatar: "https://avatar.iran.liara.run/public/4.jpg",
+    points: 1100,
+  },
+  {
+    id: 5,
+    name: "Ava Martinez",
+    avatar: "https://avatar.iran.liara.run/public/5.jpg",
+    points: 1080,
+  },
+];
