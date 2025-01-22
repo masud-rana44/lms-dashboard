@@ -25,6 +25,7 @@ import {
 import { useUser } from "@/hooks/use-user";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { Skeleton } from "../ui/skeleton";
 
 const navigationLinks = {
   admin: [
@@ -51,7 +52,7 @@ const navigationLinks = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { user } = useUser();
+  const { user, isLoading } = useUser();
   const pathname = usePathname();
 
   const userNavigation = navigationLinks[user?.role || "student"];
@@ -86,25 +87,35 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <div className="mt-5 flex-grow flex flex-col">
           <nav className="flex-1 px-2 space-y-1">
-            {userNavigation.map((item) => {
-              const Icon = item.icon;
-              const isActive = pathname.startsWith(item.href);
-              // const isActive = pathname.startsWith(item.href);
+            {
+              // loading state
+              isLoading ? (
+                <div className="space-y-2">
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-8 w-full" />
+                </div>
+              ) : (
+                userNavigation.map((item) => {
+                  const Icon = item.icon;
+                  const isActive = pathname.startsWith(item.href);
 
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-sidebar-accent",
-                    isActive && "bg-sidebar-accent"
-                  )}
-                >
-                  <Icon className="mr-3 h-6 w-6" />
-                  {item.name}
-                </Link>
-              );
-            })}
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={cn(
+                        "group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-sidebar-accent",
+                        isActive && "bg-sidebar-accent"
+                      )}
+                    >
+                      <Icon className="mr-3 h-6 w-6" />
+                      {item.name}
+                    </Link>
+                  );
+                })
+              )
+            }
           </nav>
         </div>
       </SidebarContent>

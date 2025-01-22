@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/sidebar";
 import { signOut, useSession } from "next-auth/react";
 import { useUser } from "@/hooks/use-user";
+import { Skeleton } from "../ui/skeleton";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
@@ -30,11 +31,11 @@ export function NavUser() {
     return (
       <SidebarMenu>
         <SidebarMenuItem>
-          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <div className="h-8 w-8 rounded-lg bg-gray-200 animate-pulse" />
-            <div className="grid flex-1 text-left text-sm leading-tight">
-              <div className="h-4 bg-gray-200 animate-pulse rounded" />
-              <div className="h-4 bg-gray-200 animate-pulse rounded" />
+          <div className="flex items-center gap-2 px-1 py-1.5">
+            <Skeleton className="h-8 w-8 bg-gray-200" />
+            <div className="space-y-1 w-full">
+              <Skeleton className="h-3 w-full bg-gray-200" />
+              <Skeleton className="h-3 w-full bg-gray-200" />
             </div>
           </div>
         </SidebarMenuItem>

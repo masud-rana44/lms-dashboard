@@ -16,7 +16,7 @@ import { Button } from "@/components/ui/button";
 import { StatsCard } from "@/components/stats-card";
 import { ChartSpline, Lightbulb, UserCheck, Users } from "lucide-react";
 import CourseProgressChart from "@/components/course/course-progress-chart";
-import { leaderboardData } from "@/lib/mock-data";
+import { leaderboardData, mockCourses } from "@/lib/mock-data";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -33,8 +33,17 @@ export default function InstructorDashboardPage() {
   const { user, isLoading } = useUser();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex mt-32 justify-center h-screen">
+        <div className="w-16 h-16 border-4 border-gray-200 rounded-full border-t-accent animate-spin" />
+      </div>
+    );
   }
+
+  const totalStudents = mockCourses.reduce(
+    (acc, course) => acc + course.enrolledStudents,
+    0
+  );
 
   return (
     <div className="space-y-8  min-h-screen">
@@ -75,7 +84,7 @@ export default function InstructorDashboardPage() {
           bgColor="bg-purple-100"
           textColor="text-purple-600"
           title="Total Students"
-          value="1,500"
+          value={totalStudents}
         />
         <StatsCard
           icon={<UserCheck />}

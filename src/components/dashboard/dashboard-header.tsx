@@ -17,9 +17,7 @@ export default function DashboardHeader() {
   const pathname = usePathname();
 
   const breadcrumbs = useMemo(() => {
-    const segments = pathname
-      .split("/")
-      .filter((segment) => segment !== "" && segment !== "dashboard");
+    const segments = pathname.split("/").filter((segment) => segment !== "");
 
     return segments.map((segment, index) => {
       const href = `/${segments.slice(0, index + 1).join("/")}`;
@@ -28,12 +26,14 @@ export default function DashboardHeader() {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
 
+      const isFast = index === 0;
       const isLast = index === segments.length - 1;
 
       return {
         href,
         label,
         isLast,
+        isFast,
       };
     });
   }, [pathname]);
@@ -45,13 +45,10 @@ export default function DashboardHeader() {
         <Separator orientation="vertical" className="mr-2 h-4" />
         <Breadcrumb>
           <BreadcrumbList>
-            {/* <BreadcrumbItem>
-              <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
-            </BreadcrumbItem> */}
-            {breadcrumbs.map(({ href, label, isLast }) => (
+            {breadcrumbs.map(({ href, label, isLast, isFast }) => (
               <BreadcrumbItem key={href}>
-                <BreadcrumbSeparator />
-                {isLast ? (
+                {!isFast && <BreadcrumbSeparator />}
+                {isLast || isFast ? (
                   <BreadcrumbPage>{label}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink href={href}>{label}</BreadcrumbLink>
