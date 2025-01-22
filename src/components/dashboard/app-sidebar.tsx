@@ -14,7 +14,14 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import Image from "next/image";
-import { Home, BookOpen, Users, BarChart, Settings } from "lucide-react";
+import {
+  Home,
+  BookOpen,
+  Users,
+  BarChart,
+  Settings,
+  BadgePlus,
+} from "lucide-react";
 import { useUser } from "@/hooks/use-user";
 
 const navigationLinks = {
@@ -28,9 +35,9 @@ const navigationLinks = {
   instructor: [
     { name: "Dashboard", href: "/instructor/dashboard", icon: Home },
     { name: "My Courses", href: "/instructor/courses", icon: BookOpen },
-    { name: "Create Course", href: "/instructor/courses/new", icon: Settings },
-    { name: "Engagement", href: "/instructor/engagement", icon: BarChart },
-    { name: "Queries", href: "/instructor/queries", icon: Users },
+    { name: "Create Course", href: "/instructor/courses/new", icon: BadgePlus },
+    // { name: "Engagement", href: "/instructor/engagement", icon: BarChart },
+    // { name: "Queries", href: "/instructor/queries", icon: Users },
   ],
   student: [
     { name: "Dashboard", href: "/student/dashboard", icon: Home },
