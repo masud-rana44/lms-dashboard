@@ -23,6 +23,8 @@ import {
   BadgePlus,
 } from "lucide-react";
 import { useUser } from "@/hooks/use-user";
+import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const navigationLinks = {
   admin: [
@@ -35,9 +37,11 @@ const navigationLinks = {
   instructor: [
     { name: "Dashboard", href: "/instructor/dashboard", icon: Home },
     { name: "My Courses", href: "/instructor/courses", icon: BookOpen },
-    { name: "Create Course", href: "/instructor/courses/new", icon: BadgePlus },
-    // { name: "Engagement", href: "/instructor/engagement", icon: BarChart },
-    // { name: "Queries", href: "/instructor/queries", icon: Users },
+    {
+      name: "Create Course",
+      href: "/instructor/create-course",
+      icon: BadgePlus,
+    },
   ],
   student: [
     { name: "Dashboard", href: "/student/dashboard", icon: Home },
@@ -48,6 +52,7 @@ const navigationLinks = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useUser();
+  const pathname = usePathname();
 
   const userNavigation = navigationLinks[user?.role || "student"];
 
@@ -83,11 +88,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <nav className="flex-1 px-2 space-y-1">
             {userNavigation.map((item) => {
               const Icon = item.icon;
+              const isActive = pathname.startsWith(item.href);
+              // const isActive = pathname.startsWith(item.href);
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-sidebar-accent"
+                  className={cn(
+                    "group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-sidebar-accent",
+                    isActive && "bg-sidebar-accent"
+                  )}
                 >
                   <Icon className="mr-3 h-6 w-6" />
                   {item.name}

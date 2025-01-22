@@ -51,7 +51,7 @@ export default function InstructorCourses() {
 
         <Button
           size="lg"
-          onClick={() => router.push("/instructor/courses/new")}
+          onClick={() => router.push("/instructor/create-course")}
         >
           Create Course
         </Button>
