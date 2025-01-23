@@ -14,14 +14,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Home,
-  BookOpen,
-  Users,
-  BarChart,
-  Settings,
-  BadgePlus,
-} from "lucide-react";
+import { Home, BookOpen, Users, BarChart, BadgePlus } from "lucide-react";
 import { useUser } from "@/hooks/use-user";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -31,9 +24,7 @@ const navigationLinks = {
   admin: [
     { name: "Dashboard", href: "/admin/dashboard", icon: Home },
     { name: "Users", href: "/admin/users", icon: Users },
-    { name: "Roles & Permissions", href: "/admin/roles", icon: Settings },
     { name: "Analytics", href: "/admin/analytics", icon: BarChart },
-    { name: "Reports", href: "/admin/reports", icon: BarChart },
   ],
   instructor: [
     { name: "Dashboard", href: "/instructor/dashboard", icon: Home },

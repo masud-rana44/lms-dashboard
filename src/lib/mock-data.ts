@@ -763,6 +763,27 @@ export const mockUsers: User[] = [
     password: "student123",
     role: "student",
   },
+  {
+    id: 4,
+    name: "Admin User",
+    email: "admin2@example.com",
+    password: "admin123",
+    role: "admin",
+  },
+  {
+    id: 5,
+    name: "Instructor",
+    email: "instructor2@example.com",
+    password: "instructor123",
+    role: "instructor",
+  },
+  {
+    id: 6,
+    name: "Student",
+    email: "student2@example.com",
+    password: "student123",
+    role: "student",
+  },
 ];
 
 export const leaderboardData = [
