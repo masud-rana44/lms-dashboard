@@ -12,12 +12,12 @@ import {
 } from "chart.js";
 import Link from "next/link";
 import { useUser } from "@/hooks/use-user";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { StatsCard } from "@/components/stats-card";
+import { leaderboardData, mockCourses } from "@/lib/mock-data";
 import { ChartSpline, Lightbulb, UserCheck, Users } from "lucide-react";
 import CourseProgressChart from "@/components/course/course-progress-chart";
-import { leaderboardData, mockCourses } from "@/lib/mock-data";
-import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 ChartJS.register(

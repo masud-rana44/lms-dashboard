@@ -47,7 +47,6 @@ const navigationLinks = {
   student: [
     { name: "Dashboard", href: "/student/dashboard", icon: Home },
     { name: "My Courses", href: "/student/courses", icon: BookOpen },
-    { name: "Feedback", href: "/student/feedback", icon: Settings },
   ],
 };
 

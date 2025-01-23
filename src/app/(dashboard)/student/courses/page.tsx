@@ -17,8 +17,6 @@ export default function StudentCourses() {
       course.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  console.log({ user, isLoading });
-
   if (isLoading) {
     return (
       <div className="flex mt-32 justify-center h-screen">
