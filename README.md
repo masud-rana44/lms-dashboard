@@ -4,8 +4,6 @@
 
 The Softmax Online School Dashboard is a role-based web application designed to facilitate efficient learning and management for **Admins**, **Instructors**, and **Students**. Built with **Next.js** and **TypeScript**, it enables seamless navigation, dynamic course management, and engaging visual analytics to enhance the online learning experience.
 
----
-
 ## **Getting Started**
 
 Follow these steps to set up and run the project locally.
@@ -50,8 +48,6 @@ yarn dev
 
 Visit the app at **[http://localhost:3000](http://localhost:3000)**.
 
----
-
 ## **Demo Credentials**
 
 Use the following credentials to log in as different roles in the application:
@@ -69,8 +65,6 @@ Use the following credentials to log in as different roles in the application:
 - **Student**:
   - Email: `student@example.com`
   - Password: `student123`
-
----
 
 ### **Key Features**
 
