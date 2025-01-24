@@ -1,6 +1,14 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  BookIcon,
+  DollarSignIcon,
+  GraduationCap,
+  UserIcon,
+} from "lucide-react";
+import { StatsCard } from "@/components/stats-card";
+import { mockCourses, mockUsers } from "@/lib/mock-data";
 import { Overview } from "@/components/dashboard/overview";
 import { RecentSales, Sale } from "@/components/dashboard/recent-sales";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const sampleSales: Sale[] = [
   {
@@ -45,56 +53,47 @@ export const sampleSales: Sale[] = [
   },
 ];
 
+const totalUsers = mockUsers.length;
+const totalCourses = mockCourses.length;
+
+const data = [
+  {
+    icon: <UserIcon />,
+    bgColor: "bg-blue-100",
+    textColor: "text-blue-600",
+    title: "Total Users",
+    value: totalUsers,
+  },
+  {
+    icon: <BookIcon />,
+    bgColor: "bg-orange-100",
+    textColor: "text-orange-600",
+    title: "Total Courses",
+    value: totalCourses,
+  },
+  {
+    icon: <GraduationCap />,
+    bgColor: "bg-green-100",
+    textColor: "text-green-600",
+    title: "Active Students",
+    value: "5",
+  },
+  {
+    icon: <DollarSignIcon />,
+    bgColor: "bg-yellow-100",
+    textColor: "text-yellow-600",
+    title: "Revenue",
+    value: "$5,231.89",
+  },
+];
+
 export default function AdminDashboard() {
   return (
     <div className="space-y-4">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Users</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">1,234</div>
-            <p className="text-xs text-muted-foreground">
-              +20.1% from last month
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Courses</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">45</div>
-            <p className="text-xs text-muted-foreground">
-              +12.5% from last month
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Active Students
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">873</div>
-            <p className="text-xs text-muted-foreground">
-              +18.2% from last month
-            </p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Revenue</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">$45,231.89</div>
-            <p className="text-xs text-muted-foreground">
-              +15.3% from last month
-            </p>
-          </CardContent>
-        </Card>
+        {data.map((item) => (
+          <StatsCard key={item.title} {...item} />
+        ))}
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
         <Card className="col-span-4">
@@ -102,7 +101,6 @@ export default function AdminDashboard() {
             <CardTitle>Overview</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
-            {" "}
             <Overview />{" "}
           </CardContent>
         </Card>
@@ -111,7 +109,6 @@ export default function AdminDashboard() {
             <CardTitle>Recent Sales</CardTitle>
           </CardHeader>
           <CardContent>
-            {" "}
             <RecentSales sales={sampleSales} />{" "}
           </CardContent>
         </Card>

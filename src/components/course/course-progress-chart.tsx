@@ -57,7 +57,7 @@ const CourseProgressChart = ({ user }: { user: User }) => {
     datasets: [
       {
         label: "Enrolled Students",
-        data: instructedCourses.map((course) => course.enrolledStudents),
+        data: instructedCourses.map((course) => course.enrolledStudents.length),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",

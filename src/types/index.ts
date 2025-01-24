@@ -74,7 +74,7 @@ export interface Course {
     name: string;
     avatar?: string;
   };
-  enrolledStudents: number;
+  enrolledStudents: User[];
   lessons: Lesson[];
   queries?: Query[];
 }

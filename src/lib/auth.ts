@@ -11,7 +11,6 @@ import { JWT } from "next-auth/jwt";
 
 export const authConfig: NextAuthConfig = {
   providers: [
-    // Credentials Provider
     CredentialsProvider({
       name: "Credentials",
       credentials: {

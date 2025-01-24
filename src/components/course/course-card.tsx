@@ -23,7 +23,7 @@ export function CourseCard({ course, user }: { course: Course; user: User }) {
       0
     );
     const totalPossibleCompletions =
-      course.enrolledStudents * course.lessons.length;
+      course.enrolledStudents.length * course.lessons.length;
     return Math.round((totalCompletions / totalPossibleCompletions) * 100);
   };
 
@@ -78,7 +78,7 @@ export function CourseCard({ course, user }: { course: Course; user: User }) {
             <div className="flex justify-between items-center text-sm">
               <div className="flex items-center text-gray-600">
                 <Users className="h-4 w-4 mr-1" />
-                <span>{course.enrolledStudents} Students</span>
+                <span>{course.enrolledStudents.length} Students</span>
               </div>
               <div className="flex items-center text-gray-600">
                 <MessageSquare className="h-4 w-4 mr-1" />

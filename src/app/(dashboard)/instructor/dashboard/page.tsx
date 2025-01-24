@@ -41,7 +41,7 @@ export default function InstructorDashboardPage() {
   }
 
   const totalStudents = mockCourses.reduce(
-    (acc, course) => acc + course.enrolledStudents,
+    (acc, course) => acc + course.enrolledStudents.length,
     0
   );
 
@@ -91,7 +91,7 @@ export default function InstructorDashboardPage() {
           bgColor="bg-red-100"
           textColor="text-red-600"
           title="Active Students"
-          value="1,320"
+          value="20"
         />
       </div>
 
@@ -107,7 +107,7 @@ export default function InstructorDashboardPage() {
               Leaderboard
             </h3>
 
-            <div className="">
+            <div>
               {leaderboardData.map((user, index) => (
                 <div
                   key={user.id}

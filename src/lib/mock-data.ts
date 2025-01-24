@@ -17,7 +17,36 @@ export const mockCourses: Course[] = [
       avatar:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop",
     },
-    enrolledStudents: 256,
+    enrolledStudents: [
+      {
+        id: 3,
+        name: "Student",
+        email: "student@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 4,
+        name: "Student2",
+        email: "student2@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 5,
+        name: "Student3",
+        email: "student3@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 6,
+        name: "Student4",
+        email: "student4@example.com",
+        password: "student123",
+        role: "student",
+      },
+    ],
     lessons: [
       {
         id: "l1",
@@ -172,7 +201,50 @@ export const mockCourses: Course[] = [
       avatar:
         "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=100&auto=format&fit=crop",
     },
-    enrolledStudents: 320,
+    enrolledStudents: [
+      {
+        id: 4,
+        name: "Student2",
+        email: "student2@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 5,
+        name: "Student3",
+        email: "student3@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 6,
+        name: "Student4",
+        email: "student4@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 4,
+        name: "Student2",
+        email: "student2@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 5,
+        name: "Student3",
+        email: "student3@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 6,
+        name: "Student4",
+        email: "student4@example.com",
+        password: "student123",
+        role: "student",
+      },
+    ],
     lessons: [
       {
         id: "l1",
@@ -278,7 +350,36 @@ export const mockCourses: Course[] = [
       avatar:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop",
     },
-    enrolledStudents: 500,
+    enrolledStudents: [
+      {
+        id: 3,
+        name: "Student",
+        email: "student@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 4,
+        name: "Student2",
+        email: "student2@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 5,
+        name: "Student3",
+        email: "student3@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 6,
+        name: "Student4",
+        email: "student4@example.com",
+        password: "student123",
+        role: "student",
+      },
+    ],
     lessons: [
       {
         id: "l1",
@@ -391,7 +492,57 @@ export const mockCourses: Course[] = [
       avatar:
         "https://images.unsplash.com/photo-1511367461989-f85a21fda167?w=100",
     },
-    enrolledStudents: 700,
+    enrolledStudents: [
+      {
+        id: 3,
+        name: "Student",
+        email: "student@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 4,
+        name: "Student2",
+        email: "student2@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 5,
+        name: "Student3",
+        email: "student3@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 6,
+        name: "Student4",
+        email: "student4@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 4,
+        name: "Student2",
+        email: "student2@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 5,
+        name: "Student3",
+        email: "student3@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 6,
+        name: "Student4",
+        email: "student4@example.com",
+        password: "student123",
+        role: "student",
+      },
+    ],
     lessons: [
       {
         id: "l1",
@@ -483,7 +634,36 @@ export const mockCourses: Course[] = [
       avatar:
         "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100",
     },
-    enrolledStudents: 450,
+    enrolledStudents: [
+      {
+        id: 3,
+        name: "Student",
+        email: "student@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 4,
+        name: "Student2",
+        email: "student2@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 5,
+        name: "Student3",
+        email: "student3@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 6,
+        name: "Student4",
+        email: "student4@example.com",
+        password: "student123",
+        role: "student",
+      },
+    ],
     lessons: [
       {
         id: "l1",
@@ -618,7 +798,36 @@ export const mockCourses: Course[] = [
       avatar:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100",
     },
-    enrolledStudents: 380,
+    enrolledStudents: [
+      {
+        id: 3,
+        name: "Student",
+        email: "student@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 4,
+        name: "Student2",
+        email: "student2@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 5,
+        name: "Student3",
+        email: "student3@example.com",
+        password: "student123",
+        role: "student",
+      },
+      {
+        id: 6,
+        name: "Student4",
+        email: "student4@example.com",
+        password: "student123",
+        role: "student",
+      },
+    ],
     lessons: [
       {
         id: "l1",

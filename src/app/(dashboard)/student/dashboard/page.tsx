@@ -1,9 +1,8 @@
 import { DashboardStats } from "@/types";
-// import { Progress } from "@/components/ui/progress";
 import { StatsCard } from "@/components/stats-card";
 import { EnrolledCourses } from "@/components/dashboard/enrolled-courses";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChartSpline, Lightbulb, UserCheck, Users } from "lucide-react";
+import { BookCheck, ChartSpline, Lightbulb, Users } from "lucide-react";
 
 export const stats: DashboardStats = {
   enrolledCount: 4,
@@ -61,7 +60,7 @@ const studentStatsData = [
     value: 4,
   },
   {
-    icon: <UserCheck />,
+    icon: <BookCheck />,
     bgColor: "bg-red-100",
     textColor: "text-red-600",
     title: "Active Assignments",

@@ -211,7 +211,7 @@ export default function CourseDetails() {
               </div>
               <div className="flex items-center">
                 <Users className="h-5 w-5 mr-1" />
-                <span>{course.enrolledStudents} students</span>
+                <span>{course.enrolledStudents.length} students</span>
               </div>
               <div className="flex items-center">
                 <Clock className="h-5 w-5 mr-1" />
