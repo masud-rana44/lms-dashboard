@@ -1,3 +1,5 @@
+"use client";
+
 import {
   BookIcon,
   DollarSignIcon,
@@ -5,11 +7,12 @@ import {
   UserIcon,
 } from "lucide-react";
 import { StatsCard } from "@/components/stats-card";
-import { mockCourses, mockUsers } from "@/lib/mock-data";
+import { mockUsers } from "@/lib/mock-data";
 import { Overview } from "@/components/dashboard/overview";
 import { RecentSales, Sale } from "@/components/dashboard/recent-sales";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Stats } from "@/types";
+import coursesApi from "@/services/coursesApi";
 
 const sampleSales: Sale[] = [
   {
@@ -55,7 +58,7 @@ const sampleSales: Sale[] = [
 ];
 
 const totalUsers = mockUsers.length;
-const totalCourses = mockCourses.length;
+const totalCourses = coursesApi.getAll().length;
 
 const statsData: Stats[] = [
   {

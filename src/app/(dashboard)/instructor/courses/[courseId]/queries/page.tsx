@@ -16,14 +16,14 @@ import {
 } from "@/components/ui/select";
 import { useUser } from "@/hooks/use-user";
 import { useParams } from "next/navigation";
-import { mockCourses } from "@/lib/mock-data";
 import { StatsCard } from "@/components/stats-card";
+import coursesApi from "@/services/coursesApi";
 
 export default function CourseDiscussions() {
   const { courseId } = useParams();
   const { user } = useUser();
   const [queries, setQueries] = useState(
-    () => mockCourses.find((c) => c.id === courseId)?.queries || []
+    () => coursesApi.getAll().find((c) => c.id === courseId)?.queries || []
   );
   const [filter, setFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");

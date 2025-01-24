@@ -10,7 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { User } from "@/types";
-import { mockCourses } from "@/lib/mock-data";
+import coursesApi from "@/services/coursesApi";
 
 // Register the required components with ChartJS
 ChartJS.register(
@@ -48,7 +48,9 @@ const chartOptions = {
 };
 
 const CourseProgressChart = ({ user }: { user: User }) => {
-  const instructedCourses = mockCourses.filter(
+  const courses = coursesApi.getAll();
+
+  const instructedCourses = courses.filter(
     (course) => course.instructor.id === user.id
   );
 

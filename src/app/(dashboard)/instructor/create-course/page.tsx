@@ -1,12 +1,12 @@
 "use client";
 
 import { Course } from "@/types";
-import { mockCourses } from "@/lib/mock-data";
+import coursesApi from "@/services/coursesApi";
 import { CourseForm } from "@/components/course/course-form";
 
 export default function CreateCoursePage() {
   const handleSubmit = (data: Course) => {
-    mockCourses.push(data);
+    coursesApi.add(data);
   };
 
   return (

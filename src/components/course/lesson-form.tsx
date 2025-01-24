@@ -136,8 +136,9 @@ export function LessonForm({ lessons, setLessons }: LessonFormProps) {
                   </div>
                   {lesson.hasQuiz && (
                     <Button
-                      variant="outline"
                       size="sm"
+                      type="button"
+                      variant="outline"
                       onClick={() => addQuiz(index)}
                     >
                       <Plus className="h-4 w-4 mr-2" />

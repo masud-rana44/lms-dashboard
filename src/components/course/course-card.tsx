@@ -18,13 +18,12 @@ export function CourseCard({ course, user }: { course: Course; user: User }) {
   const router = useRouter();
 
   const getCompletionRate = (course: Course) => {
-    const totalCompletions = course.lessons.reduce(
-      (acc, lesson) => acc + lesson.completions,
-      0
-    );
+    const totalCompletions =
+      course.lessons.reduce((acc, lesson) => acc + lesson.completions, 0) || 0;
     const totalPossibleCompletions =
-      course.enrolledStudents.length * course.lessons.length;
-    return Math.round((totalCompletions / totalPossibleCompletions) * 100);
+      course.enrolledStudents.length * course.lessons.length || 1;
+
+    return Math.round(totalCompletions / totalPossibleCompletions);
   };
 
   return (

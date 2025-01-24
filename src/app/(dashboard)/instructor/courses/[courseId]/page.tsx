@@ -2,22 +2,23 @@
 
 import { Course } from "@/types";
 import { notFound, useParams } from "next/navigation";
-import { mockCourses } from "@/lib/mock-data";
 import { CourseForm } from "@/components/course/course-form";
+import coursesApi from "@/services/coursesApi";
 
 export default function EditCourse() {
   const { courseId } = useParams();
+  const courses = coursesApi.getAll();
 
-  const course = mockCourses.find((c) => c.id === courseId);
+  const course = courses.find((c) => c.id === courseId);
 
   if (!course) {
     return notFound();
   }
 
   const handleSubmit = (data: Course) => {
-    const index = mockCourses.findIndex((c) => c.id === courseId);
+    const index = courses.findIndex((c) => c.id === courseId);
     if (index !== -1) {
-      mockCourses[index] = data;
+      courses[index] = data;
     }
   };
 

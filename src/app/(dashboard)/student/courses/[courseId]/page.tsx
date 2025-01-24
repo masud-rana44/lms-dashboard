@@ -18,11 +18,11 @@ import { Card } from "@/components/ui/card";
 import type { Course, Lesson } from "@/types";
 import { DiscussionBoard } from "@/components/course/discussion-board";
 import { LessonModal } from "@/components/course/lession-modal";
-import { mockCourses } from "@/lib/mock-data";
 import { useUser } from "@/hooks/use-user";
 import { QuizModal } from "@/components/course/quiz-modal";
 import { ReviewSection } from "@/components/course/review-section";
 import { cn } from "@/lib/utils";
+import coursesApi from "@/services/coursesApi";
 
 export default function CourseDetails() {
   const { courseId } = useParams();
@@ -34,8 +34,10 @@ export default function CourseDetails() {
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
   const [currentLessonIndex, setCurrentLessonIndex] = useState(0);
 
+  const courses = coursesApi.getAll();
+
   useEffect(() => {
-    const foundCourse = mockCourses.find((c: Course) => c.id === courseId);
+    const foundCourse = courses.find((c: Course) => c.id === courseId);
     if (foundCourse) {
       setCourse(foundCourse);
       setProgress((completedLessons.length / foundCourse.lessons.length) * 100);

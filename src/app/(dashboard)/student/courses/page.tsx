@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { mockCourses } from "@/lib/mock-data";
 import { useUser } from "@/hooks/use-user";
 import { CourseCard } from "@/components/course/course-card";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import coursesApi from "@/services/coursesApi";
 
 export default function StudentCourses() {
   const { user, isLoading } = useUser();
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredCourses = mockCourses.filter(
+  const courses = coursesApi.getAll();
+
+  const filteredCourses = courses.filter(
     (course) =>
       course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       course.description.toLowerCase().includes(searchTerm.toLowerCase())

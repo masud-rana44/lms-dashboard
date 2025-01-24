@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **Softmax Online School - Dashboard**
 
-## Getting Started
+## **Project Overview**
 
-First, run the development server:
+The Softmax Online School Dashboard is a role-based web application designed to facilitate efficient learning and management for **Admins**, **Instructors**, and **Students**. Built with **Next.js** and **TypeScript**, it enables seamless navigation, dynamic course management, and engaging visual analytics to enhance the online learning experience.
+
+---
+
+## **Getting Started**
+
+Follow these steps to set up and run the project locally.
+
+### **1. Prerequisites**
+
+Ensure you have the following installed:
+
+- **Node.js**: v18.x or higher.
+- **npm** or **yarn**: Latest version.
+
+### **2. Clone the Repository**
+
+```bash
+git clone https://github.com/masud-rana44/lms-dashboard.git
+cd lms-dashboard
+```
+
+### **3. Install Dependencies**
+
+```bash
+# Using npm
+npm install
+
+# Or using yarn
+yarn install
+```
+
+### **4. Environment Variables**
+
+Locate the `example.env` file in the root directory. Rename it to `.env.local` and fill in the required values with your specific credentials.
+
+> Replace placeholder values like `your_*` with the actual keys and secrets from OAuth provider's configuration.
+
+### **5. Run the Development Server**
 
 ```bash
 npm run dev
-# or
+# Or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit the app at **[http://localhost:3000](http://localhost:3000)**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## **Demo Credentials**
 
-## Learn More
+Use the following credentials to log in as different roles in the application:
 
-To learn more about Next.js, take a look at the following resources:
+- **Admin**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - Email: `admin@example.com`
+  - Password: `admin123`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Instructor**:
 
-## Deploy on Vercel
+  - Email: `instructor@example.com`
+  - Password: `instructor123`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Student**:
+  - Email: `student@example.com`
+  - Password: `student123`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### **Key Features**
+
+- **Admin Features**:
+
+  - Manage users and their roles dynamically.
+  - View site analytics (e.g., user growth, course performance, total sales).
+
+- **Instructor Features**:
+
+  - Create, edit, and manage courses with prerequisites and pricing.
+  - Track student progress using charts and metrics.
+  - Interact with students through query management.
+
+- **Student Features**:
+  - Access enrolled courses and track progress with visual indicators.
+  - Submit feedback and interact with course content effortlessly.
+  - Access quizzes and submit answers for real-time feedback.
+
+### **Tech Stack**
+
+- **Frontend Framework**: [Next.js](https://nextjs.org/) (App Router, Server Components).
+- **Styling**: Tailwind CSS for responsive, utility-first design.
+- **Charts**: Chart.js and react-chartjs-2 for interactive data visualizations.
+- **Authentication**: NextAuth.js with support for Google, GitHub, and Facebook OAuth.

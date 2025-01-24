@@ -30,7 +30,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { mockCourses } from "@/lib/mock-data";
+import coursesApi from "@/services/coursesApi";
 
 const courseSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -110,8 +110,8 @@ export function CourseForm({ initialData, onSubmit }: CourseFormProps) {
   };
 
   const handleDelete = () => {
-    const courseIdx = mockCourses.findIndex((c) => c.id === initialData?.id);
-    mockCourses.splice(courseIdx, 1);
+    if (initialData) coursesApi.delete(initialData.id);
+
     toast({
       title: "Course Deleted",
       description: "The course has been deleted successfully.",
@@ -211,7 +211,11 @@ export function CourseForm({ initialData, onSubmit }: CourseFormProps) {
                     <FormLabel>Course Image URL</FormLabel>
                     <FormControl>
                       <div className="flex gap-2">
-                        <Input {...field} />
+                        <Input
+                          type="text"
+                          placeholder="Enter image URL"
+                          {...field}
+                        />
                         <Button type="button" variant="outline" size="icon">
                           <Upload className="h-4 w-4" />
                         </Button>

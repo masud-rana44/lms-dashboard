@@ -15,10 +15,11 @@ import { useUser } from "@/hooks/use-user";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { StatsCard } from "@/components/stats-card";
-import { leaderboardData, mockCourses } from "@/lib/mock-data";
+import { leaderboardData } from "@/lib/mock-data";
 import { ChartSpline, Lightbulb, UserCheck, Users } from "lucide-react";
 import CourseProgressChart from "@/components/course/course-progress-chart";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import coursesApi from "@/services/coursesApi";
 
 ChartJS.register(
   LineElement,
@@ -40,10 +41,9 @@ export default function InstructorDashboardPage() {
     );
   }
 
-  const totalStudents = mockCourses.reduce(
-    (acc, course) => acc + course.enrolledStudents.length,
-    0
-  );
+  const totalStudents = coursesApi
+    .getAll()
+    .reduce((acc, course) => acc + course.enrolledStudents.length, 0);
 
   return (
     <div className="space-y-8  min-h-screen">
