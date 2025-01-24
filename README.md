@@ -1,4 +1,4 @@
-# **Softmax Online School - Dashboard**
+# **Learning Management Dashboard**
 
 ## **Project Overview**
 
