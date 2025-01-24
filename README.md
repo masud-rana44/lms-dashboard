@@ -4,6 +4,31 @@
 
 The Softmax Online School Dashboard is a role-based web application designed to facilitate efficient learning and management for **Admins**, **Instructors**, and **Students**. Built with **Next.js** and **TypeScript**, it enables seamless navigation, dynamic course management, and engaging visual analytics to enhance the online learning experience.
 
+### **Key Features**
+
+- **Admin Features**:
+
+  - Manage users and their roles dynamically.
+  - View site analytics (e.g., user growth, course performance, total sales).
+
+- **Instructor Features**:
+
+  - Create, edit, and manage courses with prerequisites and pricing.
+  - Track student progress using charts and metrics.
+  - Interact with students through query management.
+
+- **Student Features**:
+  - Access enrolled courses and track progress with visual indicators.
+  - Submit feedback and interact with course content effortlessly.
+  - Access quizzes and submit answers for real-time feedback.
+
+### **Tech Stack**
+
+- **Frontend Framework**: [Next.js](https://nextjs.org/) (App Router, Server Components).
+- **Styling**: Tailwind CSS for responsive, utility-first design.
+- **Charts**: Chart.js and react-chartjs-2 for interactive data visualizations.
+- **Authentication**: NextAuth.js with support for Google, GitHub, and Facebook OAuth.
+
 ## **Getting Started**
 
 Follow these steps to set up and run the project locally.
@@ -65,28 +90,3 @@ Use the following credentials to log in as different roles in the application:
 - **Student**:
   - Email: `student@example.com`
   - Password: `student123`
-
-### **Key Features**
-
-- **Admin Features**:
-
-  - Manage users and their roles dynamically.
-  - View site analytics (e.g., user growth, course performance, total sales).
-
-- **Instructor Features**:
-
-  - Create, edit, and manage courses with prerequisites and pricing.
-  - Track student progress using charts and metrics.
-  - Interact with students through query management.
-
-- **Student Features**:
-  - Access enrolled courses and track progress with visual indicators.
-  - Submit feedback and interact with course content effortlessly.
-  - Access quizzes and submit answers for real-time feedback.
-
-### **Tech Stack**
-
-- **Frontend Framework**: [Next.js](https://nextjs.org/) (App Router, Server Components).
-- **Styling**: Tailwind CSS for responsive, utility-first design.
-- **Charts**: Chart.js and react-chartjs-2 for interactive data visualizations.
-- **Authentication**: NextAuth.js with support for Google, GitHub, and Facebook OAuth.
