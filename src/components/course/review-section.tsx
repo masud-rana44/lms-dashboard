@@ -51,11 +51,7 @@ const mockReviews: Review[] = [
   },
 ];
 
-interface ReviewSectionProps {
-  courseId: string;
-}
-
-export function ReviewSection({ courseId }: ReviewSectionProps) {
+export function ReviewSection() {
   const [reviews, setReviews] = useState<Review[]>(mockReviews);
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [sortBy, setSortBy] = useState<"recent" | "helpful">("recent");

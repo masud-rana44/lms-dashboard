@@ -9,21 +9,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-interface Course {
-  id: string;
-  title: string;
-  progress: number;
-  status: "not-started" | "in-progress" | "completed";
-  lastAccessed: string;
-}
+import { enrolledCourses } from "@/types";
 
 interface EnrolledCoursesProps {
-  courses?: Course[];
+  courses: enrolledCourses[];
 }
 
-export function EnrolledCourses({ courses = [] }: EnrolledCoursesProps) {
-  const getStatusColor = (status: Course["status"]) => {
+export function EnrolledCourses({ courses }: EnrolledCoursesProps) {
+  const getStatusColor = (status: enrolledCourses["status"]) => {
     switch (status) {
       case "completed":
         return "text-green-500";
@@ -34,7 +27,7 @@ export function EnrolledCourses({ courses = [] }: EnrolledCoursesProps) {
     }
   };
 
-  const getStatusText = (status: Course["status"]) => {
+  const getStatusText = (status: enrolledCourses["status"]) => {
     switch (status) {
       case "completed":
         return "Completed";

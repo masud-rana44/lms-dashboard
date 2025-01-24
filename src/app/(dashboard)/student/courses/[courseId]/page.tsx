@@ -290,7 +290,7 @@ export default function CourseDetails() {
               </TabsContent>
 
               <TabsContent value="reviews">
-                <ReviewSection courseId={course.id} />
+                <ReviewSection />
               </TabsContent>
             </Tabs>
           </div>

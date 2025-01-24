@@ -1,18 +1,11 @@
-export interface DashboardStats {
-  enrolledCount: number;
-  inProgressCount: number;
-  overallProgress: number;
-  completedCount: number;
-  completedThisMonth: number;
-  certificatesCount: number;
-  latestCertificate: string;
-  courses: {
-    id: string;
-    title: string;
-    progress: number;
-    status: "not-started" | "in-progress" | "completed";
-    lastAccessed: string;
-  }[];
+import { ReactNode } from "react";
+
+export interface enrolledCourses {
+  id: string;
+  title: string;
+  progress: number;
+  status: "not-started" | "in-progress" | "completed";
+  lastAccessed: string;
 }
 
 export interface User {
@@ -77,4 +70,12 @@ export interface Course {
   enrolledStudents: User[];
   lessons: Lesson[];
   queries?: Query[];
+}
+
+export interface Stats {
+  icon: ReactNode;
+  bgColor: string;
+  textColor: string;
+  title: string;
+  value: string | number;
 }

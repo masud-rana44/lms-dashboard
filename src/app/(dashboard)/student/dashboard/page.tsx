@@ -1,43 +1,10 @@
-import { DashboardStats } from "@/types";
+import { enrolledCourses, Stats } from "@/types";
 import { StatsCard } from "@/components/stats-card";
+import { BookCheck, ChartSpline, Lightbulb, Users } from "lucide-react";
 import { EnrolledCourses } from "@/components/dashboard/enrolled-courses";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookCheck, ChartSpline, Lightbulb, Users } from "lucide-react";
 
-export const stats: DashboardStats = {
-  enrolledCount: 4,
-  inProgressCount: 2,
-  overallProgress: 65,
-  completedCount: 2,
-  completedThisMonth: 1,
-  certificatesCount: 2,
-  latestCertificate: "Web Development",
-  courses: [
-    {
-      id: "1",
-      title: "Web Development Fundamentals",
-      progress: 100,
-      status: "completed",
-      lastAccessed: "2024-03-15",
-    },
-    {
-      id: "2",
-      title: "React Advanced Concepts",
-      progress: 45,
-      status: "in-progress",
-      lastAccessed: "2024-03-20",
-    },
-    {
-      id: "3",
-      title: "TypeScript Masterclass",
-      progress: 0,
-      status: "not-started",
-      lastAccessed: "N/A",
-    },
-  ],
-};
-
-const studentStatsData = [
+const studentStatsData: Stats[] = [
   {
     icon: <Lightbulb />,
     bgColor: "bg-green-100",
@@ -69,6 +36,30 @@ const studentStatsData = [
 ];
 
 export default function StudentDashboardPage() {
+  const courses: enrolledCourses[] = [
+    {
+      id: "1",
+      title: "Web Development Fundamentals",
+      progress: 100,
+      status: "completed",
+      lastAccessed: "2024-03-15",
+    },
+    {
+      id: "2",
+      title: "React Advanced Concepts",
+      progress: 45,
+      status: "in-progress",
+      lastAccessed: "2024-03-20",
+    },
+    {
+      id: "3",
+      title: "TypeScript Masterclass",
+      progress: 0,
+      status: "not-started",
+      lastAccessed: "N/A",
+    },
+  ];
+
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
       <div className="space-y-4">
@@ -91,7 +82,7 @@ export default function StudentDashboardPage() {
             <CardTitle>Your Enrolled Courses</CardTitle>
           </CardHeader>
           <CardContent>
-            <EnrolledCourses courses={stats.courses} />
+            <EnrolledCourses courses={courses} />
           </CardContent>
         </Card>
       </div>

@@ -89,7 +89,7 @@ export function CourseForm({ initialData, onSubmit }: CourseFormProps) {
       lessons,
       id: initialData?.id || Date.now().toString(),
       rating: initialData?.rating || 0,
-      enrolledStudents: initialData?.enrolledStudents || 0,
+      enrolledStudents: initialData?.enrolledStudents || [],
       imageUrl: initialData?.imageUrl || "",
       instructor: initialData?.instructor || {
         id: user.id,

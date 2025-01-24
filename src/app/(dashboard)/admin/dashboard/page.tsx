@@ -9,8 +9,9 @@ import { mockCourses, mockUsers } from "@/lib/mock-data";
 import { Overview } from "@/components/dashboard/overview";
 import { RecentSales, Sale } from "@/components/dashboard/recent-sales";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Stats } from "@/types";
 
-export const sampleSales: Sale[] = [
+const sampleSales: Sale[] = [
   {
     id: "1",
     studentName: "John Doe",
@@ -56,7 +57,7 @@ export const sampleSales: Sale[] = [
 const totalUsers = mockUsers.length;
 const totalCourses = mockCourses.length;
 
-const data = [
+const statsData: Stats[] = [
   {
     icon: <UserIcon />,
     bgColor: "bg-blue-100",
@@ -90,26 +91,32 @@ const data = [
 export default function AdminDashboard() {
   return (
     <div className="space-y-4">
+      {/* Stats Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {data.map((item) => (
-          <StatsCard key={item.title} {...item} />
+        {statsData.map((stat) => (
+          <StatsCard key={stat.title} {...stat} />
         ))}
       </div>
+
+      {/* Dashboard Content */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+        {/* Overview Section */}
         <Card className="col-span-4">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
-            <Overview />{" "}
+            <Overview />
           </CardContent>
         </Card>
+
+        {/* Recent Sales Section */}
         <Card className="col-span-3">
           <CardHeader>
             <CardTitle>Recent Sales</CardTitle>
           </CardHeader>
           <CardContent>
-            <RecentSales sales={sampleSales} />{" "}
+            <RecentSales sales={sampleSales} />
           </CardContent>
         </Card>
       </div>
